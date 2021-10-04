@@ -2,8 +2,10 @@
   <ul class="contacts_items" *ngFor="let contact of contacts">
     <li class="contact-item">
       <i class="{{ contact.icon }}"></i>
-      <a *ngIf="contact.option" class="contact-link" href="{{ contact.link }}" download>{{ contact.name | translate }}</a>
-      <a *ngIf="!contact.option" class="contact-link" href="{{ contact.link }}">{{ contact.name | translate }}</a>
+      <a *ngIf="contact.isDownload; else simpleLink" class="contact-link" href="{{ contact.link }}" download>{{ contact.name | translate }}</a>
+      <ng-template #simpleLink>
+        <a class="contact-link" href="{{ contact.link }}">{{ contact.name | translate }}</a>
+      </ng-template>
     </li>
   </ul>
 </section>
