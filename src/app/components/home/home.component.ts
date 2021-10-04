@@ -9,9 +9,9 @@ import { InformationResponse, Info, Competence } from '../../models/models';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public education: Info[];
-  public experience: Info[];
-  public technology: Competence[];
+  // public education: Info[];
+  // public experience: Info[];
+  // public technology: Competence[];
   public general: Info;
 
   constructor(public dataService: DataService, public languageService: LanguageService) { }

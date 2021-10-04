@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LanguageService {
   public lang = new BehaviorSubject<string>(
-    localStorage['language'] ? localStorage['language'] : window.navigator.language
+    localStorage['language'] ? localStorage['language'] : 'en'
   );
   currentLang = this.lang.asObservable();
 
