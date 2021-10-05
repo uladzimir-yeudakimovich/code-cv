@@ -23,7 +23,7 @@
 }
 
 .is-invalid {
-  border: 2px solid $delete-message-color;
+  border: 2px solid $alert-error-color;
 }
 
 .invalid-feedback {
@@ -31,7 +31,7 @@
   justify-content: center;
   margin: -8px 0 10px;
   font-size: 80%;
-  color: $delete-message-color;
+  color: $alert-error-color;
 }
 
 .btn-submit {

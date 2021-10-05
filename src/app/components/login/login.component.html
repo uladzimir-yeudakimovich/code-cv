@@ -1,0 +1,60 @@
+<div class="login-container">
+  <form
+    appearance="fill"
+    [formGroup]="loginForm"
+  >
+    <app-alert></app-alert>
+    <div>
+      <mat-form-field>
+        <mat-label for="username">Username</mat-label>
+        <input
+          matInput
+          type="text"
+          class="form-control"
+          name="username"
+          formControlName="username"
+          aria-label="username"
+          required
+        />
+        <mat-error *ngIf="!isRequired.username.valid && isRequired.username.touched">Username is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label for="password">Password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          name="password"
+          formControlName="password"
+          aria-label="password"
+          required
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="!isRequired.password.valid && isRequired.password.touched">
+          <mat-error *ngIf="isRequired.password.errors.required">Password is required</mat-error>
+          <mat-error *ngIf="isRequired.password.errors.minlength">Password must be at least 6 characters</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!loginForm.valid"
+        (click)="onSubmit()"
+      >
+        Login
+        <mat-icon *ngIf="loading"><mat-spinner color="accent" diameter="20"></mat-spinner></mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

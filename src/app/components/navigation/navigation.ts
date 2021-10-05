@@ -1,6 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-navigation',
@@ -10,13 +11,16 @@ import { Router, NavigationEnd } from '@angular/router';
 export class NavigationComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   title: string;
+  isLoggedIn = false;
+  username?: string;
 
   private _mobileQueryListener: () => void;
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    private router: Router
+    private router: Router,
+    private tokenStorageService: TokenStorageService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -24,6 +28,13 @@ export class NavigationComponent implements OnDestroy {
   }
 
   ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.username = user.username;
+    }
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const name = event.url.replace('/', '');
@@ -31,6 +42,11 @@ export class NavigationComponent implements OnDestroy {
         if (!this.title) this.title = 'Home';
       }
     });
+  }
+
+  logout(): void {
+    this.tokenStorageService.logOut();
+    window.location.reload();
   }
 
   ngOnDestroy(): void {
