@@ -18,6 +18,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { FeedbackModule } from './components/feedback/feedback.module';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -49,6 +52,9 @@ export function createTranslateLoader(http: HttpClient) {
     ContactsComponent,
     HomeComponent,
     ProjectsComponent,
+    LoginComponent,
+    RegisterComponent,
+    AlertComponent,
   ],
   providers: [],
   bootstrap: [ AppComponent ]
