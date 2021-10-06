@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 
 import { AuthService } from '../../services/auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
@@ -15,7 +14,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   hide: boolean = true;
   loading: boolean = false;
-  private subscription: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -38,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     const { username, password } = this.loginForm.value;
 
-    this.subscription = this.authService.login(username, password).subscribe(
+    this.authService.login(username, password).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
@@ -51,9 +49,5 @@ export class LoginComponent implements OnInit {
     ).add(() => {
       this.loading = false;
     });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

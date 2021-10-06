@@ -8,8 +8,8 @@ import { AlertService } from '../../services/alert.service';
   styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent implements OnInit {
-  private subscription: Subscription;
   message: string;
+  private subscription: Subscription;
 
   constructor(private alertService: AlertService) { }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 
 import { AuthService } from '../../services/auth.service';
 import { AlertService } from '../../services/alert.service';
@@ -14,7 +13,6 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   hide = true;
   loading: boolean = false;
-  private subscription: Subscription;
 
   constructor(private authService: AuthService, private alertService: AlertService) { }
 
@@ -34,7 +32,7 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
     const { username, email, password } = this.registerForm.value;
 
-    this.subscription = this.authService.register(username, email, password).subscribe(
+    this.authService.register(username, email, password).subscribe(
       data => {
         console.log(data);
         this.alertService.success('Your registration is successful!');
@@ -45,9 +43,5 @@ export class RegisterComponent implements OnInit {
     ).add(() => {
       this.loading = false;
     });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }
