@@ -33,8 +33,8 @@ export class NavigationComponent implements OnDestroy {
       this.isLoggedIn = isLogin;
 
       if (isLogin) {
-        const user = this.tokenStorageService.getUser();
-        this.username = user.username;
+        const { username } = this.tokenStorageService.getUser();
+        this.username = username;
       }
     });
 
