@@ -1,0 +1,75 @@
+<div class="register-container">
+  <form
+    appearance="fill"
+    [formGroup]="registerForm"
+  >
+    <app-alert></app-alert>
+    <div>
+      <mat-form-field>
+        <mat-label for="username">{{ 'form.name' | translate }}</mat-label>
+        <input
+          matInput
+          type="text"
+          class="form-control"
+          name="username"
+          formControlName="username"
+          aria-label="username"
+          required
+        />
+        <mat-error *ngIf="!isRequired.username.valid && isRequired.username.touched">
+          <mat-error *ngIf="isRequired.username.errors.required">{{ 'required.name' | translate }}</mat-error>
+          <mat-error *ngIf="isRequired.username.errors.minlength">{{ 'required.nameMin' | translate }}</mat-error>
+          <mat-error *ngIf="isRequired.username.errors.maxlength">{{ 'required.nameMax' | translate }}</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label for="email">{{ 'form.email' | translate }}</mat-label>
+        <input
+          matInput
+          type="email"
+          class="form-control"
+          name="email"
+          formControlName="email"
+          aria-label="email"
+          required
+        />
+        <mat-error *ngIf="!isRequired.email.valid && isRequired.email.touched">
+          <mat-error *ngIf="isRequired.email.errors.required">{{ 'required.email' | translate }}</mat-error>
+          <mat-error *ngIf="isRequired.email.errors.email">{{ 'required.emailValid' | translate }}</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>{{ 'form.password' | translate }}</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          aria-label="password"
+          required
+        />
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="!isRequired.password.valid && isRequired.password.touched">
+          <mat-error *ngIf="isRequired.password.errors.required">{{ 'required.password' | translate }}</mat-error>
+          <mat-error *ngIf="isRequired.password.errors.minlength">{{ 'required.passwordLength' | translate }}</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!registerForm.valid"
+        (click)="onSubmit()"
+      >
+        {{ 'SignUp' | translate }}
+      <mat-icon *ngIf="loading"><mat-spinner color="accent" diameter="20"></mat-spinner></mat-icon>
+    </button>
+    </div>
+  </form>
+</div>

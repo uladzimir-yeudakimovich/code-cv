@@ -27,7 +27,7 @@ export interface Project {
 }
 
 export interface Feedback {
-  email: string;
+  email?: string;
   message: string;
   name: string;
   time: Date;

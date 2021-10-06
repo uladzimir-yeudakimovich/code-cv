@@ -1,0 +1,16 @@
+@import "../../styles/colors.scss";
+
+.alert-danger {
+  background-color: $alert-error-color;
+}
+
+.alert-success {
+  background-color: $alert-success-color;
+}
+
+.alert{
+  padding: 20px;
+  color: $home-text-color;
+  margin-bottom: 15px;
+  text-align: center;
+}
