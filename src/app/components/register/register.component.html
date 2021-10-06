@@ -6,7 +6,7 @@
     <app-alert></app-alert>
     <div>
       <mat-form-field>
-        <mat-label for="username">Username</mat-label>
+        <mat-label for="username">{{ 'form.name' | translate }}</mat-label>
         <input
           matInput
           type="text"
@@ -17,15 +17,15 @@
           required
         />
         <mat-error *ngIf="!isRequired.username.valid && isRequired.username.touched">
-          <mat-error *ngIf="isRequired.username.errors.required">Username is required</mat-error>
-          <mat-error *ngIf="isRequired.username.errors.minlength">Username must be at least 3 characters</mat-error>
-          <mat-error *ngIf="isRequired.username.errors.maxlength">Username must be at most 20 characters</mat-error>
+          <mat-error *ngIf="isRequired.username.errors.required">{{ 'required.name' | translate }}</mat-error>
+          <mat-error *ngIf="isRequired.username.errors.minlength">{{ 'required.nameMin' | translate }}</mat-error>
+          <mat-error *ngIf="isRequired.username.errors.maxlength">{{ 'required.nameMax' | translate }}</mat-error>
         </mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field>
-        <mat-label for="email">Email</mat-label>
+        <mat-label for="email">{{ 'form.email' | translate }}</mat-label>
         <input
           matInput
           type="email"
@@ -36,14 +36,14 @@
           required
         />
         <mat-error *ngIf="!isRequired.email.valid && isRequired.email.touched">
-          <mat-error *ngIf="isRequired.email.errors.required">Email is required</mat-error>
-          <mat-error *ngIf="isRequired.email.errors.email">Email must be a valid email address</mat-error>
+          <mat-error *ngIf="isRequired.email.errors.required">{{ 'required.email' | translate }}</mat-error>
+          <mat-error *ngIf="isRequired.email.errors.email">{{ 'required.emailValid' | translate }}</mat-error>
         </mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field>
-        <mat-label>Password</mat-label>
+        <mat-label>{{ 'form.password' | translate }}</mat-label>
         <input
           matInput
           [type]="hide ? 'password' : 'text'"
@@ -55,8 +55,8 @@
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-error *ngIf="!isRequired.password.valid && isRequired.password.touched">
-          <mat-error *ngIf="isRequired.password.errors.required">Password is required</mat-error>
-          <mat-error *ngIf="isRequired.password.errors.minlength">Password must be at least 6 characters</mat-error>
+          <mat-error *ngIf="isRequired.password.errors.required">{{ 'required.password' | translate }}</mat-error>
+          <mat-error *ngIf="isRequired.password.errors.minlength">{{ 'required.passwordLength' | translate }}</mat-error>
         </mat-error>
       </mat-form-field>
     </div>
@@ -67,7 +67,7 @@
         [disabled]="!registerForm.valid"
         (click)="onSubmit()"
       >
-      Sign Up
+        {{ 'SignUp' | translate }}
       <mat-icon *ngIf="loading"><mat-spinner color="accent" diameter="20"></mat-spinner></mat-icon>
     </button>
     </div>
