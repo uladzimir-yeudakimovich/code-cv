@@ -25,18 +25,6 @@
 			"name": "Name",
 			"email": "Email",
 			"messages": "Messages"
-		},
-		"form": {
-			"name": "Enter name *",
-			"email": "Enter email *",
-			"message": "Enter comment *"
-		},
-		"required": {
-			"name": "Name is required",
-			"email": "Email is required",
-			"validEmail": "Email must be a valid email address",
-			"message": "Comment is required",
-			"validMessage": "Comment must be at least 2 characters"
 		}
 	},
 
@@ -55,7 +43,6 @@
     "emailValid": "Email must be a valid email address",
     "password": "Password is required",
     "passwordLength": "Password must be at least 6 characters",
-    "validEmail": "Email must be a valid email address",
     "message": "Comment is required",
     "validMessage": "Comment must be at least 2 characters"
   },
