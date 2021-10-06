@@ -15,10 +15,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
-    return Observable.create({
-      accessToken: 'accessToken',
-      username: 'username',
-      error: {message: 'error'}
+    return new Observable(subscriber => {
+      subscriber.next({
+        accessToken: 'accessToken',
+        username
+      });
     });
     // return this.http.post(AUTH_API + 'login', {
     //   username,
@@ -27,10 +28,16 @@ export class AuthService {
   }
 
   register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'registration', {
-      username,
-      email,
-      password
-    }, httpOptions);
+    return new Observable(subscriber => {
+      subscriber.next({
+        accessToken: 'accessToken',
+        username
+      });
+    });
+    // return this.http.post(AUTH_API + 'registration', {
+    //   username,
+    //   email,
+    //   password
+    // }, httpOptions);
   }
 }

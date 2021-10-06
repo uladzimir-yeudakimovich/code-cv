@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 import { AlertService } from '../../services/alert.service';
 
 @Component({
@@ -14,7 +16,12 @@ export class RegisterComponent implements OnInit {
   hide = true;
   loading: boolean = false;
 
-  constructor(private authService: AuthService, private alertService: AlertService) { }
+  constructor(
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService,
+    private alertService: AlertService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -34,8 +41,10 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(username, email, password).subscribe(
       data => {
-        console.log(data);
-        this.alertService.success('Your registration is successful!');
+        this.tokenStorage.saveUser(data);
+        this.tokenStorage.saveToken(data.accessToken);
+        this.alertService.success(`Your registration is successful as ${data.username}!`);
+        this.router.navigate(['/home']);
       },
       err => {
         this.alertService.error(err.error.message || err.statusText);

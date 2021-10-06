@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -38,10 +40,10 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(username, password).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-        this.alertService.success('Logged in as ');
-        window.location.reload();
+        this.tokenStorage.saveToken(data.accessToken);
+        this.alertService.success(`Logged in as ${data.username}`);
+        this.router.navigate(['/home']);
       },
       err => {
         this.alertService.error(err.error.message || err.statusText);

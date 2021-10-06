@@ -1,6 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+
 import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { TokenStorageService } from '../../services/token-storage.service';
 export class NavigationComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   title: string;
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean;
   username?: string;
 
   private _mobileQueryListener: () => void;
@@ -28,12 +29,14 @@ export class NavigationComponent implements OnDestroy {
   }
 
   ngOnInit() {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.tokenStorageService.isLoggedIn.subscribe(isLogin => {
+      this.isLoggedIn = isLogin;
 
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.username = user.username;
-    }
+      if (isLogin) {
+        const user = this.tokenStorageService.getUser();
+        this.username = user.username;
+      }
+    });
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -46,7 +49,6 @@ export class NavigationComponent implements OnDestroy {
 
   logout(): void {
     this.tokenStorageService.logOut();
-    window.location.reload();
   }
 
   ngOnDestroy(): void {
