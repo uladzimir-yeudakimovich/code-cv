@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 .projects {
   padding: 0 15px;
@@ -61,7 +61,7 @@
     display: block;
     margin-top: 20px;
   }
-  
+
   .projects__container {
     width: 100% !important;
     margin: 0 !important;

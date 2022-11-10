@@ -10,7 +10,7 @@ import { MaterialModule } from './material.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AuthGuadg } from './services/auth-guard.service';
+import { AuthGuard } from './services/auth-guard.service';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation';
 import { ChangeLanguageComponent } from './components/change-language/change-language';
@@ -57,7 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterComponent,
     AlertComponent,
   ],
-  providers: [AuthGuadg],
+  providers: [AuthGuard],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

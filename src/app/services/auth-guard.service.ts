@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { TokenStorageService } from './token-storage.service';
 
 @Injectable()
-export class AuthGuadg implements CanActivate {
+export class AuthGuard implements CanActivate {
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
 
@@ -15,4 +15,4 @@ export class AuthGuadg implements CanActivate {
       this.router.navigate(['/']);
     }
   }
-} 
+}
