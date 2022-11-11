@@ -5,7 +5,7 @@
     "build": "ng build --configuration production --build-optimizer --base-href https://uladzimir-yeudakimovich.github.io/",
     "e2e": "ng e2e",
     "ng": "ng",
-    "lint": "eslint -c .eslintrc.js --ext .ts src",
+    "lint": "eslint -c .eslintrc.js --ext .ts src/app",
     "start": "ng serve",
     "server": "nodemon server.js",
     "test": "ng test",

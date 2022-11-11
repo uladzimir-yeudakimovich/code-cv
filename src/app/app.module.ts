@@ -24,40 +24,40 @@ import { RegisterComponent } from './components/register/register.component';
 import { AlertComponent } from './components/alert/alert.component';
 
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+    return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
-    CarouselModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    AppRoutingModule,
-    FeedbackModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-  ],
-  declarations: [
-    AppComponent,
-    NavigationComponent,
-    ChangeLanguageComponent,
-    ContactsComponent,
-    HomeComponent,
-    ProjectsComponent,
-    LoginComponent,
-    RegisterComponent,
-    AlertComponent,
-  ],
-  providers: [AuthGuard],
-  bootstrap: [ AppComponent ]
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        }),
+        CarouselModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        AppRoutingModule,
+        FeedbackModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ],
+    declarations: [
+        AppComponent,
+        NavigationComponent,
+        ChangeLanguageComponent,
+        ContactsComponent,
+        HomeComponent,
+        ProjectsComponent,
+        LoginComponent,
+        RegisterComponent,
+        AlertComponent,
+    ],
+    providers: [AuthGuard],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }

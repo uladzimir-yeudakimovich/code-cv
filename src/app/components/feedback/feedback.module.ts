@@ -8,19 +8,19 @@ import { MessagesComponent } from './messages/messages.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    TranslateModule,
-    FormsModule,
-    ReactiveFormsModule,
-	],
-	exports: [
-		FeedbackComponent
-	],
-  declarations: [
-    FeedbackComponent,
-    MessagesComponent,
-		RegisterFormComponent,
-  ]
+    imports: [
+        CommonModule,
+        TranslateModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
+    exports: [
+        FeedbackComponent
+    ],
+    declarations: [
+        FeedbackComponent,
+        MessagesComponent,
+        RegisterFormComponent,
+    ]
 })
 export class FeedbackModule { }
