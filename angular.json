@@ -144,7 +144,6 @@
       }
     }
   },
-  "defaultProject": "angular-task",
   "cli": {
     "analytics": false,
     "schematicCollections": ["@angular-eslint/schematics"]
