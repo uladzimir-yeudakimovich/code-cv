@@ -35,12 +35,10 @@
   },
   "lint": [
     {
-      "files": "src/**/*.ts",
-      "project": "src/tsconfig.json"
+      "files": "src/**/*.ts"
     },
     {
-      "files": "e2e/**/*.ts",
-      "project": "e2e/tsconfig.json"
+      "files": "e2e/**/*.ts"
     }
   ],
   "test": {
