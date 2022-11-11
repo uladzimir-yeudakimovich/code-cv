@@ -1,21 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { AlertComponent } from './alert.component';
 
 describe('AlertComponent', () => {
     let component: AlertComponent;
-    let fixture: ComponentFixture<AlertComponent>;
 
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
+        TestBed.configureTestingModule({
             declarations: [ AlertComponent ]
-        }).compileComponents();
-    });
-
-    beforeEach(() => {
-        fixture = TestBed.createComponent(AlertComponent);
+        }).overrideComponent(AlertComponent, {
+            set: {
+                template: '<div></div>'
+            },
+        });
+        const fixture = TestBed.createComponent(AlertComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('should create', () => {
