@@ -3,13 +3,22 @@
   "version": "5.0.1",
   "scripts": {
     "build": "ng build --configuration production --build-optimizer --base-href https://uladzimir-yeudakimovich.github.io/",
-    "e2e": "ng e2e",
     "ng": "ng",
-    "lint": "eslint -c .eslintrc.js --ext .ts src/app",
+    "lint": "ng lint",
     "start": "ng serve",
     "server": "nodemon server.js",
     "test": "ng test",
     "selenium": "node selenium.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --relative"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,html}": [
+       "eslint --fix"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -58,8 +67,9 @@
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "codelyzer": "^6.0.2",
-    "eslint": "^8.27.0",
+    "eslint": "^8.17.0",
     "eslint-plugin-import": "^2.26.0",
+    "husky": "^8.0.2",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.1",
@@ -67,6 +77,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "^4.0.2",
     "karma-jasmine-html-reporter": "^1.7.0",
+    "lint-staged": "^13.0.3",
     "nodemon": "^2.0.20",
     "postcss": "^8.4.19",
     "protractor": "~7.0.0",

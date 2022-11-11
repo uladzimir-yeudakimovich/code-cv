@@ -28,17 +28,9 @@
       }
     }
   ],
-  "e2e": {
-    "protractor": {
-      "config": "./protractor.conf.js"
-    }
-  },
   "lint": [
     {
       "files": "src/**/*.ts"
-    },
-    {
-      "files": "e2e/**/*.ts"
     }
   ],
   "test": {

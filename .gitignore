@@ -1,4 +1,12 @@
+# dependencies
 node_modules
+
+# compiled output
 dist
-chromedriver.exe
+
+# IDEs
+.idea
+.vscode
+
+# misc
 .angular
