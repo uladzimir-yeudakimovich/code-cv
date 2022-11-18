@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { LoginComponent } from './login.component';
+import {TestBed} from '@angular/core/testing';
+import {LoginComponent} from './login.component';
 
 describe('LoginComponent', () => {
-    let component: LoginComponent;
-    let fixture: ComponentFixture<LoginComponent>;
+    let component;
 
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [ LoginComponent ]
-        }).compileComponents();
-    });
+        TestBed.configureTestingModule({
+            declarations: [LoginComponent],
+            imports: [],
+            providers: [],
+        }).overrideComponent(LoginComponent, {
+            set: {
+                template: "<div></div>",
+            }
+        });
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(LoginComponent);
+        const fixture = TestBed.createComponent(LoginComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('should create', () => {

@@ -1,13 +1,14 @@
-import { TestBed } from '@angular/core/testing';
-
-import { AlertComponent } from './alert.component';
+import {TestBed} from '@angular/core/testing';
+import {AlertComponent} from './alert.component';
 
 describe('AlertComponent', () => {
     let component: AlertComponent;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            declarations: [ AlertComponent ]
+            declarations: [AlertComponent],
+            imports: [],
+            providers: [],
         }).overrideComponent(AlertComponent, {
             set: {
                 template: '<div></div>'

@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { RegisterComponent } from './register.component';
+import {TestBed} from '@angular/core/testing';
+import {RegisterComponent} from './register.component';
 
 describe('RegisterComponent', () => {
-    let component: RegisterComponent;
-    let fixture: ComponentFixture<RegisterComponent>;
+    let component;
 
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [ RegisterComponent ]
-        }).compileComponents();
-    });
+        TestBed.configureTestingModule({
+            declarations: [RegisterComponent],
+            imports: [],
+            providers: [],
+        }).overrideComponent(RegisterComponent, {
+            set: {
+                template: "<div></div>",
+            }
+        });
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(RegisterComponent);
+        const fixture = TestBed.createComponent(RegisterComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('should create', () => {
