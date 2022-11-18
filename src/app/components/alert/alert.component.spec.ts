@@ -1,5 +1,7 @@
-import {TestBed} from '@angular/core/testing';
-import {AlertComponent} from './alert.component';
+import { TestBed } from '@angular/core/testing';
+import { AlertService } from 'src/app/services/alert.service';
+import { MocAlertService } from 'src/app/testing/mock-service.spec';
+import { AlertComponent } from './alert.component';
 
 describe('AlertComponent', () => {
     let component: AlertComponent;
@@ -8,7 +10,9 @@ describe('AlertComponent', () => {
         TestBed.configureTestingModule({
             declarations: [AlertComponent],
             imports: [],
-            providers: [],
+            providers: [
+                {provide: AlertService, useClass: MocAlertService},
+            ],
         }).overrideComponent(AlertComponent, {
             set: {
                 template: '<div></div>'
@@ -19,6 +23,7 @@ describe('AlertComponent', () => {
     });
 
     it('should create', () => {
-        expect(component).toBeTruthy();
+        component.ngOnInit();
+        expect(component).toBeDefined();
     });
 });
