@@ -21,7 +21,7 @@ describe('RegisterComponent', () => {
             ],
         }).overrideComponent(RegisterComponent, {
             set: {
-                template: "<div></div>",
+                template: '<div></div>',
             }
         });
 

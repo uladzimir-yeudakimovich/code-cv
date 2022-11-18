@@ -51,7 +51,7 @@ export class MocRouter {
                     {
                         url: [
                             {
-                                path: "",
+                                path: '',
                             },
                         ],
                     },

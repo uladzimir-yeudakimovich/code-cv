@@ -21,7 +21,7 @@ describe('LoginComponent', () => {
             ],
         }).overrideComponent(LoginComponent, {
             set: {
-                template: "<div></div>",
+                template: '<div></div>',
             }
         });
 
