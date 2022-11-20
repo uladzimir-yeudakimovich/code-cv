@@ -19,9 +19,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { FeedbackModule } from './components/feedback/feedback.module';
 import { environment } from '../environments/environment';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './login/components/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AlertComponent } from './components/alert/alert.component';
+import { AlertComponent } from './share/alert/alert.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
