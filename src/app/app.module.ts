@@ -19,9 +19,11 @@ import { HomeComponent } from './components/home/home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { FeedbackModule } from './components/feedback/feedback.module';
 import { environment } from '../environments/environment';
-import { LoginComponent } from './login/components/login.component';
+import { LoginFormComponent } from './forms/login-form/login-form.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlertComponent } from './share/alert/alert.component';
+import { LoginPageComponent } from './login/containers/login-page.component';
+import { LoginComponent } from './login/components/login.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -53,9 +55,11 @@ export function createTranslateLoader(http: HttpClient) {
         ContactsComponent,
         HomeComponent,
         ProjectsComponent,
-        LoginComponent,
+        LoginFormComponent,
+        LoginPageComponent,
         RegisterComponent,
         AlertComponent,
+        LoginComponent,
     ],
     providers: [AuthGuard],
     bootstrap: [ AppComponent ]

@@ -1,0 +1,72 @@
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup, Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator,
+    ValidationErrors, FormBuilder } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { CVAUtils } from 'src/app/utils/cva.utils';
+
+@Component({
+    selector: 'login-form',
+    templateUrl: './login-form.component.html',
+    styleUrls: ['./login-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            multi: true,
+            useExisting: LoginFormComponent,
+        },
+        {
+            provide: NG_VALIDATORS,
+            multi: true,
+            useExisting: LoginFormComponent,
+        }
+    ]
+})
+export class LoginFormComponent implements OnInit, ControlValueAccessor, Validator, OnDestroy {
+    loading: boolean;
+    form: FormGroup;
+    hide: boolean = true;
+    onTouched: Function;
+    unsubscribe = new Subject<void>();
+
+    constructor(public formBuilder: FormBuilder) {}
+
+    ngOnInit(): void {
+        this.createFormGroup();
+    }
+
+    ngOnDestroy(): void {
+        if (this.form.untouched) {
+            this.form.setValue(this.form.value);
+        }
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    }
+
+    createFormGroup(): void {
+        this.form = this.formBuilder.group({
+            username: [null, [Validators.required]],
+            password: [null, [Validators.required, Validators.minLength(6)]],
+        });
+    }
+
+    writeValue(obj: any): void {
+        if (obj) {
+            this.form.setValue(obj, {emitEvent: false});
+            this.form.markAllAsTouched();
+        }
+    }
+
+    registerOnChange(fn: any): void {
+        this.form.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(fn);
+    }
+
+    registerOnTouched(fn: any): void {
+        this.onTouched = fn;
+    }
+
+    validate(): ValidationErrors {
+        return CVAUtils.getValidationErrors(this.form);
+    }
+}
