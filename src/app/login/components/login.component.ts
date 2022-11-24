@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -7,24 +7,16 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
     styleUrls: ['./login.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
     @Input() loading: boolean;
 
     @Output() submit: EventEmitter<any> = new EventEmitter();
 
-    form: FormGroup;
+    form: FormGroup = this.formBuilder.group({
+        credentials: [null, [Validators.required]],
+    });
 
     constructor(public formBuilder: FormBuilder) {}
-
-    ngOnInit(): void {
-        this.createFormGroup();
-    }
-
-    createFormGroup(): void {
-        this.form = this.formBuilder.group({
-            credentials: [null, [Validators.required]],
-        });
-    }
 
     onSubmit(): void {
         if (this.form.invalid) {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { FormGroup, Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator,
     ValidationErrors, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -23,18 +23,18 @@ import { CVAUtils } from 'src/app/utils/cva.utils';
         }
     ]
 })
-export class LoginFormComponent implements OnInit, ControlValueAccessor, Validator, OnDestroy {
+export class LoginFormComponent implements ControlValueAccessor, Validator, OnDestroy {
     loading: boolean;
-    form: FormGroup;
     hide: boolean = true;
     onTouched: Function;
     unsubscribe = new Subject<void>();
 
-    constructor(public formBuilder: FormBuilder) {}
+    form: FormGroup = this.formBuilder.group({
+        username: [null, [Validators.required]],
+        password: [null, [Validators.required, Validators.minLength(6)]],
+    });
 
-    ngOnInit(): void {
-        this.createFormGroup();
-    }
+    constructor(public formBuilder: FormBuilder) {}
 
     ngOnDestroy(): void {
         if (this.form.untouched) {
@@ -42,13 +42,6 @@ export class LoginFormComponent implements OnInit, ControlValueAccessor, Validat
         }
         this.unsubscribe.next();
         this.unsubscribe.complete();
-    }
-
-    createFormGroup(): void {
-        this.form = this.formBuilder.group({
-            username: [null, [Validators.required]],
-            password: [null, [Validators.required, Validators.minLength(6)]],
-        });
     }
 
     writeValue(obj: any): void {

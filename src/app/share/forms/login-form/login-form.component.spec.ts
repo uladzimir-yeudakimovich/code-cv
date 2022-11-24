@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { LoginFormComponent } from './login-form.component';
 
 describe('LoginComponent', () => {
@@ -22,8 +22,7 @@ describe('LoginComponent', () => {
         component = fixture.componentInstance;
     });
 
-    it('should create', () => {
-        component.ngOnInit();
-        expect(component).toBeDefined();
+    it('should create form', () => {
+        expect(component).toBeTruthy();
     });
 });
