@@ -31,7 +31,7 @@ describe('LoginComponent', () => {
             spyOn(component.submit, 'emit').and.stub();
             component.onSubmit();
             expect(component.submit.emit).not.toHaveBeenCalled();
-        })
+        });
 
 
         it('should emit submit event', () => {
@@ -39,6 +39,6 @@ describe('LoginComponent', () => {
             component.form.controls['credentials'].setValue({ userName: 'testName', password: 'testPassword'});
             component.onSubmit();
             expect(component.submit.emit).toHaveBeenCalled();
-        })
+        });
     });
 });

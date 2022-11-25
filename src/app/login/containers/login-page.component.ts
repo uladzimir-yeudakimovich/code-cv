@@ -15,7 +15,7 @@ export class LoginPageComponent {
         private authService: AuthService,
         private tokenStorage: TokenStorageService,
         private alertService: AlertService,
-        private router: Router
+        private router: Router,
     ) { }
 
     onSubmit(credentials): void {

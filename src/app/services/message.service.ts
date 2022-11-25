@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { TokenStorageService } from './token-storage.service';
-import { Feedback } from '..//models/models';
+import { Feedback } from '../share/models/models';
 
 @Injectable({
     providedIn: 'root',
