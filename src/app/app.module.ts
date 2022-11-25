@@ -20,10 +20,10 @@ import { ProjectsComponent } from './projects/projects.component';
 import { FeedbackModule } from './feedback/feedback.module';
 import { environment } from '../environments/environment';
 import { LoginFormComponent } from './share/forms/login-form/login-form.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './main/register/register.component';
 import { AlertComponent } from './share/components/alert/alert.component';
-import { LoginPageComponent } from './login/containers/login-page.component';
-import { LoginComponent } from './login/components/login.component';
+import { LoginPageComponent } from './main/login/containers/login-page.component';
+import { LoginComponent } from './main/login/components/login.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');

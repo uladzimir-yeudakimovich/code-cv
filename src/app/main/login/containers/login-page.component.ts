@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../services/auth.service';
-import { TokenStorageService } from '../../services/token-storage.service';
-import { AlertService } from '../../services/alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { TokenStorageService } from '../../../services/token-storage.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
     selector: 'login-page',
