@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
-    selector: 'login',
-    templateUrl: './login.component.html',
+    selector: 'register',
+    templateUrl: './register.component.html',
     styleUrls: ['../../../styles/styles.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent {
+export class RegisterComponent {
     @Input() loading: boolean;
 
     @Output() submit: EventEmitter<any> = new EventEmitter();

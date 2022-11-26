@@ -6,7 +6,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { MocAlertService, MocAuthService, MocRouter, MocTokenStorageService } from 'src/app/testing/mock-service.spec';
 import { LoginPageComponent } from './login-page.component';
 
-describe('AlertComponent', () => {
+describe('LoginPageComponent', () => {
     let component: LoginPageComponent;
 
     beforeEach(async () => {

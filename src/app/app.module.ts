@@ -20,10 +20,12 @@ import { ProjectsComponent } from './projects/projects.component';
 import { FeedbackModule } from './feedback/feedback.module';
 import { environment } from '../environments/environment';
 import { LoginFormComponent } from './share/forms/login-form/login-form.component';
-import { RegisterComponent } from './main/register/register.component';
+import { RegisterComponent } from './main/register/components/register.component';
 import { AlertComponent } from './share/components/alert/alert.component';
 import { LoginPageComponent } from './main/login/containers/login-page.component';
 import { LoginComponent } from './main/login/components/login.component';
+import { RegisterFormComponent } from './share/forms/register-form/register-form.component';
+import { RegisterPageComponent } from './main/register/containers/register-page.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -60,6 +62,8 @@ export function createTranslateLoader(http: HttpClient) {
         RegisterComponent,
         AlertComponent,
         LoginComponent,
+        RegisterFormComponent,
+        RegisterPageComponent,
     ],
     providers: [AuthGuard],
     bootstrap: [ AppComponent ]

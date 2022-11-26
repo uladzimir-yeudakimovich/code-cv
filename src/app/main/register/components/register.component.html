@@ -1,10 +1,10 @@
 <div class="container-center">
     <form [formGroup]="form">
-        <login-form formControlName="credentials"></login-form>
+        <register-form formControlName="credentials"></register-form>
     </form>
 
     <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">
-        {{ 'Login' | translate }}
+        {{ 'SignUp' | translate }}
         <mat-icon *ngIf="loading">
             <mat-spinner color="accent" diameter="20"></mat-spinner>
         </mat-icon>

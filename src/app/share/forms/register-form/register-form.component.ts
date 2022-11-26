@@ -6,31 +6,32 @@ import { takeUntil } from 'rxjs/operators';
 import { CVAUtils } from 'src/app/share/utils/cva.utils';
 
 @Component({
-    selector: 'login-form',
-    templateUrl: './login-form.component.html',
+    selector: 'register-form',
+    templateUrl: './register-form.component.html',
     styleUrls: ['../../../styles/styles.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
             multi: true,
-            useExisting: LoginFormComponent,
+            useExisting: RegisterFormComponent,
         },
         {
             provide: NG_VALIDATORS,
             multi: true,
-            useExisting: LoginFormComponent,
+            useExisting: RegisterFormComponent,
         }
     ]
 })
-export class LoginFormComponent implements ControlValueAccessor, Validator, OnDestroy {
+export class RegisterFormComponent implements ControlValueAccessor, Validator, OnDestroy {
     loading: boolean;
     hide: boolean = true;
     onTouched: Function;
     unsubscribe = new Subject<void>();
 
     form: FormGroup = this.formBuilder.group({
-        username: [null, [Validators.required]],
+        username: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+        email: [null, [Validators.required, Validators.email]],
         password: [null, [Validators.required, Validators.minLength(6)]],
     });
 

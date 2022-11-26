@@ -4,14 +4,14 @@ import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { MocAlertService, MocAuthService, MocRouter, MocTokenStorageService } from 'src/app/testing/mock-service.spec';
-import { RegisterComponent } from './register.component';
+import { RegisterPageComponent } from './register-page.component';
 
-describe('RegisterComponent', () => {
-    let component;
+describe('RegisterPageComponent', () => {
+    let component: RegisterPageComponent;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            declarations: [RegisterComponent],
+            declarations: [RegisterPageComponent],
             imports: [],
             providers: [
                 {provide: AuthService, useClass: MocAuthService},
@@ -19,18 +19,16 @@ describe('RegisterComponent', () => {
                 {provide: AlertService, useClass: MocAlertService},
                 {provide: Router, useClass: MocRouter},
             ],
-        }).overrideComponent(RegisterComponent, {
+        }).overrideComponent(RegisterPageComponent, {
             set: {
-                template: '<div></div>',
-            }
+                template: '<div></div>'
+            },
         });
-
-        const fixture = TestBed.createComponent(RegisterComponent);
+        const fixture = TestBed.createComponent(RegisterPageComponent);
         component = fixture.componentInstance;
     });
 
     it('should create', () => {
-        component.ngOnInit();
         expect(component).toBeDefined();
     });
 });
