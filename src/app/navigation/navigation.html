@@ -12,7 +12,7 @@
   <mat-sidenav-container
     class="app-sidenav-container"
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav 
+    <mat-sidenav
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
@@ -24,7 +24,7 @@
         <a mat-list-item routerLink="/feedback">{{ 'Feedback' | translate }}</a>
       </mat-nav-list>
     </mat-sidenav>
-    
+
   <router-outlet></router-outlet>
   </mat-sidenav-container>
 </div>

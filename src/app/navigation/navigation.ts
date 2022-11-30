@@ -2,7 +2,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
     selector: 'app-navigation',

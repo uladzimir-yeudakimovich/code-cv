@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '../share/shared.module';
 
 import { FeedbackComponent } from './feedback.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -9,10 +7,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
     imports: [
-        CommonModule,
-        TranslateModule,
-        FormsModule,
-        ReactiveFormsModule,
+        SharedModule,
     ],
     exports: [
         FeedbackComponent
@@ -23,4 +18,4 @@ import { RegisterFormComponent } from './register-form/register-form.component';
         RegisterFormComponent,
     ]
 })
-export class FeedbackModule { }
+export class FeedbackModule {}

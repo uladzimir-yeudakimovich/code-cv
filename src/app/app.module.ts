@@ -6,26 +6,18 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './services/auth-guard.service';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './share/components/navigation/navigation';
-import { ChangeLanguageComponent } from './share/components/change-language/change-language';
 import { ContactsComponent } from './contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { FeedbackModule } from './feedback/feedback.module';
 import { environment } from '../environments/environment';
-import { LoginFormComponent } from './share/forms/login-form/login-form.component';
-import { RegisterComponent } from './main/register/components/register.component';
-import { AlertComponent } from './share/components/alert/alert.component';
-import { LoginPageComponent } from './main/login/containers/login-page.component';
-import { LoginComponent } from './main/login/components/login.component';
-import { RegisterFormComponent } from './share/forms/register-form/register-form.component';
-import { RegisterPageComponent } from './main/register/containers/register-page.component';
+import { MainModule } from './main/main.module';
+import { SharedModule } from './share/shared.module';
+import { NavigationComponent } from './navigation/navigation';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -45,27 +37,20 @@ export function createTranslateLoader(http: HttpClient) {
         }),
         CarouselModule,
         BrowserAnimationsModule,
-        MaterialModule,
         AppRoutingModule,
         FeedbackModule,
+        MainModule,
+        SharedModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     declarations: [
         AppComponent,
-        NavigationComponent,
-        ChangeLanguageComponent,
         ContactsComponent,
         HomeComponent,
         ProjectsComponent,
-        LoginFormComponent,
-        LoginPageComponent,
-        RegisterComponent,
-        AlertComponent,
-        LoginComponent,
-        RegisterFormComponent,
-        RegisterPageComponent,
+        NavigationComponent,
     ],
-    providers: [AuthGuard],
-    bootstrap: [ AppComponent ]
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
