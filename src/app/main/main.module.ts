@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { LoginFormComponent } from '../share/forms/login-form/login-form.component';
-import { RegisterFormComponent } from '../share/forms/register-form/register-form.component';
+import { LoginFormComponent } from './forms/login-form/login-form.component';
+import { RegisterFormComponent } from './forms/register-form/register-form.component';
 import { SharedModule } from '../share/shared.module';
 
 import { LoginComponent } from './login/components/login.component';
