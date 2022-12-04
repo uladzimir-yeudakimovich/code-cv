@@ -13,7 +13,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     mobileQuery: MediaQueryList;
     title: string;
     isLoggedIn: boolean;
-    username?: string;
+    username: string;
 
     private _mobileQueryListener: () => void;
 

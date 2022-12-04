@@ -22,6 +22,6 @@ export class LoginComponent {
         if (this.form.invalid) {
             return;
         }
-        this.submit.emit(this.form.value);
+        this.submit.emit(this.form.value.credentials);
     }
 }
