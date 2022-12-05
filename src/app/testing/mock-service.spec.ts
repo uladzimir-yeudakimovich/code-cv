@@ -38,6 +38,16 @@ export class MocTokenStorageService {
     }
 }
 
+export class MockDataService {
+    getInformation() {
+        return of();
+    }
+
+    getProjects() {
+        return of();
+    }
+}
+
 export class MocRouter {
     event: Subject<Event> = new Subject();
 
