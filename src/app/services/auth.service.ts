@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-const AUTH_API = 'https://uladzimir-yeudakimovich.herokuapp.com/';
+import { AppConfigService } from '../core/config/app-config.service';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
-    constructor(private http: HttpClient) { }
+    const baseUrl: string;
+
+    constructor(appConfigService: AppConfigService, private http: HttpClient) {
+        appConfigService.getAppConfig().subscribe(appConfig => {
+            return (this.baseUrl = appConfig.serviceConfig.baseCVServiceUrl.value);
+        });
+    }
 
     login(username: string, password: string): Observable<any> {
         return new Observable(subscriber => {
@@ -21,7 +24,7 @@ export class AuthService {
                 username
             });
         });
-        // return this.http.post(AUTH_API + 'login', {
+        // return this.http.post(baseUrl + 'login', {
         //   username,
         //   password
         // }, httpOptions);
@@ -34,7 +37,7 @@ export class AuthService {
                 username
             });
         });
-        // return this.http.post(AUTH_API + 'registration', {
+        // return this.http.post(baseUrl + 'registration', {
         //   username,
         //   email,
         //   password

@@ -1,6 +1,6 @@
 import { AppState } from './app.reducer';
 import * as selectors from './app.selectors';
-import { mockInformation } from '../testing/mock-data.spec';
+import { mockInformation } from '../../testing/mock-data.spec';
 
 describe('app selectors', () => {
 

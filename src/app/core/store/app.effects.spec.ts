@@ -5,9 +5,9 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { of, ReplaySubject } from 'rxjs';
 import { AppEffects } from './app.effects';
 import * as actions from './app.action';
-import { DataService } from '../services/data.service';
-import { MockDataService } from '../testing/mock-service.spec';
-import { mockInformation } from '../testing/mock-data.spec';
+import { DataService } from '../../services/data.service';
+import { MockDataService } from '../../testing/mock-service.spec';
+import { mockInformation } from '../../testing/mock-data.spec';
 
 describe('AppEffects', () => {
     let effects;

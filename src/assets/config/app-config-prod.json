@@ -1,0 +1,25 @@
+{
+    "globalConfig": {
+        "env": {
+            "value": "prod"
+        },
+        "authRedirectUri": {
+            "value": "https://uladzimir-yeudakimovich.herokuapp.com/auth"
+        },
+        "authLogoutUri": {
+            "value": "https://uladzimir-yeudakimovich.herokuapp.com/sign-out"
+        }
+    },
+    "serviceConfig": {
+        "baseCVServiceUrl": {
+            "value": "http://uladzimir-yeudakimovich.herokuapp.com/",
+            "overrideAble": true
+        }
+    },
+    "hiddenServiceConfig": {
+        "feedBackService": {
+            "value": true,
+            "overrideAble": true
+        }
+    }
+}

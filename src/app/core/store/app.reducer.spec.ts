@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { appInitialState, appReducer } from './app.reducer';
 import * as actions from './app.action';
-import { mockInformation } from '../testing/mock-data.spec';
+import { mockInformation } from '../../testing/mock-data.spec';
 
 describe('appReducer', () => {
     it('should change current generalInfo state data', () => {
