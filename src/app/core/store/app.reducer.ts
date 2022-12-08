@@ -26,7 +26,7 @@ export function appReducer(state = appInitialState, action: AppActions.Actions):
     switch (action.type) {
         case AppActions.ActionTypes.LoadGeneralInformation:
             return appInitialState;
-        case AppActions.ActionTypes.LoadAppConfig:
+        case AppActions.ActionTypes.LoadApplicationConfig:
             return {...state, appConfig: action.appConfig};
         case AppActions.ActionTypes.LoadGeneralInformationSuccess:
             return {...state, generalInfo: action.info};

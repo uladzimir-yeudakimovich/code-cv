@@ -14,6 +14,6 @@ export class AppConfigService {
         return this.store.pipe(
             select(AppSelectors.selectAppConfig),
             filter(appConfig => !!appConfig),
-        )
+        );
     }
 }

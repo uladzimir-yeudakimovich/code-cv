@@ -4,29 +4,29 @@ import { BooleanConfigProperty, MapConfigProperty, StringConfigProperty } from '
 @jsonObject
 export class AppConfig {
     @jsonMember
-    serviceConfig: ServiceConfig;
+        serviceConfig: ServiceConfig;
 }
 
 @jsonObject
 export class ServiceConfig {
     @jsonMember
-    baseCVServiceUrl: StringConfigProperty;
+        baseCVServiceUrl: StringConfigProperty;
 }
 
 @jsonObject
 export class HiddenServiceConfig {
     @jsonMember
-    feedBackService: BooleanConfigProperty;
+        feedBackService: BooleanConfigProperty;
 }
 
 @jsonObject
 export class GlobalConfig {
     @jsonMember
-    env: StringConfigProperty;
+        env: StringConfigProperty;
     @jsonMember
-    authRedirectUri: StringConfigProperty;
+        authRedirectUri: StringConfigProperty;
     @jsonMember
-    authLogoutUri: StringConfigProperty;
+        authLogoutUri: StringConfigProperty;
     // @jsonArrayMember(MapConfigProperty)
-    // enumResources: MapConfigProperty<JsonSchemaResourceConfig>[];
+    //     enumResources: MapConfigProperty<JsonSchemaResourceConfig>[];
 }

@@ -9,12 +9,10 @@ const httpOptions = {
 
 @Injectable()
 export class AuthService {
-    const baseUrl: string;
+    baseUrl: string;
 
     constructor(appConfigService: AppConfigService, private http: HttpClient) {
-        appConfigService.getAppConfig().subscribe(appConfig => {
-            return (this.baseUrl = appConfig.serviceConfig.baseCVServiceUrl.value);
-        });
+        appConfigService.getAppConfig().subscribe(appConfig => this.baseUrl = appConfig.serviceConfig.baseCVServiceUrl.value);
     }
 
     login(username: string, password: string): Observable<any> {

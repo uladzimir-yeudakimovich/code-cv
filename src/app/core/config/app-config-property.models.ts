@@ -2,32 +2,32 @@ import { jsonMember, jsonObject } from 'typedjson';
 
 export abstract class ConfigProperty {
     @jsonMember
-    override?: boolean;
+        override?: boolean;
     abstract value;
 }
 
 @jsonObject
 export class StringConfigProperty extends ConfigProperty {
     @jsonMember
-    value: string;
+        value: string;
 }
 
 @jsonObject
 export class BooleanConfigProperty extends ConfigProperty {
     @jsonMember
-    value: boolean;
+        value: boolean;
 }
 
 @jsonObject
 export class NumberConfigProperty extends ConfigProperty {
     @jsonMember
-    value: number;
+        value: number;
 }
 
 @jsonObject
 export class MapConfigProperty<T> extends ConfigProperty {
     @jsonMember
-    key: string;
+        key: string;
     @jsonMember
-    value: T;
+        value: T;
 }

@@ -7,6 +7,7 @@ describe('app selectors', () => {
     describe('generalInfo', () => {
         it('should return generalInfo sets', () => {
             const appState: AppState = {
+                appConfig: null,
                 generalInfo: mockInformation,
                 changeIndicator: {
                     inProgress: [],
