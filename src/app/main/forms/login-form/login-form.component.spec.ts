@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CVAUtils } from 'src/app/share/utils/cva.utils';
 import { LoginFormComponent } from './login-form.component';
 
 describe('LoginComponent', () => {
@@ -24,5 +25,29 @@ describe('LoginComponent', () => {
 
     it('should create form', () => {
         expect(component).toBeTruthy();
+    });
+
+    describe('writeValue', () => {
+        it('should fill the form with provided data', () => {
+            const mockValue = {
+                username: 'testName',
+                password: 'testPassword',
+            };
+
+            component.writeValue(mockValue);
+
+            expect(component.form.value).toEqual(mockValue);
+        });
+    });
+
+    describe('validate', () => {
+        it('should call utils', () => {
+            component.form.controls.username.setValue('testName');
+            spyOn(CVAUtils, 'getValidationErrors');
+
+            component.validate();
+
+            expect(CVAUtils.getValidationErrors).toHaveBeenCalledWith(component.form);
+        });
     });
 });
