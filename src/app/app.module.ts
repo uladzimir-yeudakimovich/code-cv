@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -19,7 +19,7 @@ import { ProjectModule } from './project/project.module';
 import { NavigationComponent } from './navigation/navigation';
 
 export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+    return new TranslateHttpLoader(http);
 }
 
 @NgModule({

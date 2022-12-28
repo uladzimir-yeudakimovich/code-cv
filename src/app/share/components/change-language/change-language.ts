@@ -6,7 +6,7 @@ import { LanguageService } from '../../../services/language.service';
 @Component({
     selector: 'change-language',
     templateUrl: './change-language.html',
-    styleUrls: ['./change-language.scss']
+    styleUrls: ['./change-language.scss'],
 })
 export class ChangeLanguageComponent implements OnInit {
     language: string;

@@ -6,7 +6,7 @@
       <a *ngIf="!isLoggedIn" mat-button href="/login" class="app-name" routerLink="login">{{ 'Login' | translate }}</a>
       <p *ngIf="isLoggedIn" class="app-name">{{ username }}</p>
       <a *ngIf="isLoggedIn" mat-button href class="app-name" (click)="logout()">{{ 'LogOut' | translate }}</a>
-      <!-- <change-language></change-language> -->
+      <change-language></change-language>
     </mat-toolbar>
 
     <mat-sidenav-container
