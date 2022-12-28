@@ -5,7 +5,7 @@ import { InformationResponse } from '../../share/models/models';
 
 
 export enum ActionTypes {
-    LoadApplicationConfig = 'Load app config',
+    LoadApplicationConfig = 'Load application config',
     LoadGeneralInformation = 'Load General Information',
     LoadGeneralInformationSuccess = 'Load General Information Success',
     LoadGeneralInformationFailure = 'Load General Information Failure',

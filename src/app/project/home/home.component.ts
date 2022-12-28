@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
-import { LanguageService } from '../services/language.servise';
-import { InformationResponse, Info, Competence } from '../share/models/models';
+import { DataService } from '../../services/data.service';
+import { LanguageService } from '../../services/language.service';
+import { InformationResponse, Info, Competence } from '../../share/models/models';
 
 @Component({
     selector: 'app-home',
@@ -14,7 +14,10 @@ export class HomeComponent implements OnInit {
     // public technology: Competence[];
     public general: Info;
 
-    constructor(public dataService: DataService, public languageService: LanguageService) { }
+    constructor(
+        public dataService: DataService,
+        public languageService: LanguageService,
+    ) {}
 
     ngOnInit() {
         this.dataService.getInformation().subscribe((response: InformationResponse) => {

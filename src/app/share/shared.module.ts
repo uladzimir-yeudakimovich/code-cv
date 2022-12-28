@@ -1,11 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
 import { ChangeLanguageComponent } from './components/change-language/change-language';
-import { MaterialModule } from './material.module';
 import { AuthGuard } from '../services/auth-guard.service';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
     declarations: [
@@ -14,15 +13,11 @@ import { AuthGuard } from '../services/auth-guard.service';
     ],
     imports: [
         CommonModule,
-        TranslateModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule,
     ],
     exports: [
         AlertComponent,
-        CommonModule,
-        TranslateModule,
         FormsModule,
         ReactiveFormsModule,
         MaterialModule,

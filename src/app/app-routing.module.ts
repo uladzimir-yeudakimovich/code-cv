@@ -4,10 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './services/auth-guard.service';
 import { LoginPageComponent } from './main/login/containers/login-page.component';
 import { RegisterPageComponent } from './main/register/containers/register-page.component';
-import { HomeComponent } from './home/home.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { FeedbackComponent } from './feedback/feedback.component';
+import { HomeComponent } from './project/home/home.component';
+import { ProjectsComponent } from './project/projects/projects.component';
+import { ContactsComponent } from './project/contacts/contacts.component';
+import { FeedbackComponent } from './project/feedback/feedback.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginPageComponent },

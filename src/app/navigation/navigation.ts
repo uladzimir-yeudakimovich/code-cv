@@ -1,7 +1,6 @@
-import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
-
 import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { TokenStorageService } from '../services/token-storage.service';
     templateUrl: './navigation.html',
     styleUrls: ['./navigation.scss']
 })
-export class NavigationComponent implements OnInit, OnDestroy {
+export class NavigationComponent  implements OnInit, OnDestroy {
     mobileQuery: MediaQueryList;
     title: string;
     isLoggedIn: boolean;
@@ -21,7 +20,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
         changeDetectorRef: ChangeDetectorRef,
         media: MediaMatcher,
         private router: Router,
-        private tokenStorageService: TokenStorageService
+        private tokenStorageService: TokenStorageService,
     ) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();

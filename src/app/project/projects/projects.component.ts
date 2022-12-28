@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { DataService } from '../services/data.service';
-import { LanguageService } from '../services/language.servise';
-import { Project } from '../share/models/models';
+import { DataService } from '../../services/data.service';
+import { LanguageService } from '../../services/language.service';
+import { Project } from '../../share/models/models';
 
 @Component({
     selector: 'app-projects',
