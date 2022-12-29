@@ -43,9 +43,7 @@ describe('LoginComponent', () => {
 
     describe('registerOnTouched', () => {
         it('should set onChange function', () => {
-            const fn = (value) => {
-                return 'touched';
-            };
+            const fn = () => 0;
 
             component.registerOnTouched(fn);
 
