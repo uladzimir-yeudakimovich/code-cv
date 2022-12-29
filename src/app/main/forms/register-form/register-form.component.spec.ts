@@ -41,6 +41,18 @@ describe('LoginComponent', () => {
         });
     });
 
+    describe('registerOnTouched', () => {
+        it('should set onChange function', () => {
+            const fn = (value) => {
+                return 'touched';
+            };
+
+            component.registerOnTouched(fn);
+
+            expect(component.onTouched).toEqual(fn);
+        });
+    });
+
     describe('validate', () => {
         it('should call utils', () => {
             component.form.controls.username.setValue('testName');
