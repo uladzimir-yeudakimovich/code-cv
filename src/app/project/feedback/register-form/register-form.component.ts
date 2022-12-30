@@ -6,7 +6,7 @@ import { MessageService } from '../../../services/message.service';
 @Component({
     selector: 'app-register-form',
     templateUrl: './register-form.component.html',
-    styleUrls: ['./register-form.component.scss']
+    styleUrls: ['./register-form.component.scss'],
 })
 export class RegisterFormComponent implements OnInit {
     createMessageForm: FormGroup;
@@ -19,14 +19,15 @@ export class RegisterFormComponent implements OnInit {
 
     ngOnInit() {
         this.createMessageForm = new FormGroup({
-            'message': new FormControl(null, [Validators.required, Validators.minLength(2)])
+            'message': new FormControl(null, [Validators.required, Validators.minLength(2)]),
         });
     }
 
     onSubmit() {
         this.messageService.updateMessage(this.createMessageForm.value).subscribe(
-            (response) => console.log(response),
-            (error) => console.log(error)
+            // TODO: Delete console
+            // (response) => console.log(response),
+            // (error) => console.log(error)
         );
         this.createMessageForm.reset();
 
@@ -34,7 +35,7 @@ export class RegisterFormComponent implements OnInit {
             eventCategory: 'submit',
             eventLabel: 'click',
             eventAction: 'userMessage',
-            eventValue: this.createMessageForm.value
+            eventValue: this.createMessageForm.value,
         });
     }
 }

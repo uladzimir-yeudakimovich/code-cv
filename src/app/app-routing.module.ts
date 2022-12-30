@@ -16,11 +16,11 @@ const routes: Routes = [
     { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
     { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
     { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
-    { path: '', redirectTo: '/login', pathMatch: 'full' }
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class AppRoutingModule { }

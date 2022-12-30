@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { FormGroup, Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator,
-    ValidationErrors, FormBuilder } from '@angular/forms';
+         ValidationErrors, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CVAUtils } from 'src/app/share/utils/cva.utils';
@@ -20,8 +20,8 @@ import { CVAUtils } from 'src/app/share/utils/cva.utils';
             provide: NG_VALIDATORS,
             multi: true,
             useExisting: LoginFormComponent,
-        }
-    ]
+        },
+    ],
 })
 export class LoginFormComponent implements ControlValueAccessor, Validator, OnDestroy {
     loading: boolean;

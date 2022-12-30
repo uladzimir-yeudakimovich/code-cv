@@ -28,7 +28,19 @@
         "paths": {
           "core-js/es7/reflect": [
             "node_modules/core-js/proposals/reflect-metadata"
-          ]
+          ],
+          "@config/*": [
+            "src/app/core/config/*"
+          ],
+          "@core/*": [
+            "src/app/core/*"
+          ],
+          "@shared/*": [
+            "src/app/shared/*"
+          ],
+          "@testing/*": [
+            "src/app/testing/index.ts"
+          ],
         }
     },
     "angularCompilerOptions": {

@@ -15,7 +15,7 @@ describe('AlertComponent', () => {
             ],
         }).overrideComponent(AlertComponent, {
             set: {
-                template: '<div></div>'
+                template: '<div></div>',
             },
         });
         const fixture = TestBed.createComponent(AlertComponent);

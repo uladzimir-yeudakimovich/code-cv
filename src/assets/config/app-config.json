@@ -1,0 +1,25 @@
+{
+    "globalConfig": {
+        "env": {
+            "value": "local"
+        },
+        "authRedirectUri": {
+            "value": "http://localhost:3000/auth"
+        },
+        "authLogoutUri": {
+            "value": "http://localhost:3000/sign-out"
+        }
+    },
+    "serviceConfig": {
+        "baseCVServiceUrl": {
+            "value": "http://uladzimir-yeudakimovich.herokuapp.com/",
+            "overrideAble": true
+        }
+    },
+    "hiddenServiceConfig": {
+        "feedBackService": {
+            "value": false,
+            "overrideAble": true
+        }
+    }
+}

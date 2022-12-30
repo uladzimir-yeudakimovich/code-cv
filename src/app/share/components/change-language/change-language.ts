@@ -28,7 +28,7 @@ export class ChangeLanguageComponent implements OnInit {
             eventCategory: 'changeLanguage',
             eventLabel: 'click',
             eventAction: 'userLanguage',
-            eventValue: this.language
+            eventValue: this.language,
         });
     }
 }

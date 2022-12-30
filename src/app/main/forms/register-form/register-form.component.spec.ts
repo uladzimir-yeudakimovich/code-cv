@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { CVAUtils } from 'src/app/share/utils/cva.utils';
 import { RegisterFormComponent } from './register-form.component';
 
@@ -16,7 +16,7 @@ describe('LoginComponent', () => {
         }).overrideComponent(RegisterFormComponent, {
             set: {
                 template: '<div></div>',
-            }
+            },
         });
 
         const fixture = TestBed.createComponent(RegisterFormComponent);

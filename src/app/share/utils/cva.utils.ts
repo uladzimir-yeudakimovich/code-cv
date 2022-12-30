@@ -13,7 +13,7 @@ export class CVAUtils {
         const errors = {...allErrors};
         const controlErrors = form.controls[controlName].errors;
 
-        if(controlErrors) {
+        if (controlErrors) {
             errors[controlName] = controlErrors;
         }
 

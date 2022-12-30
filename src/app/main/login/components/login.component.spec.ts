@@ -15,7 +15,7 @@ describe('LoginComponent', () => {
         }).overrideComponent(LoginComponent, {
             set: {
                 template: '<div></div>',
-            }
+            },
         });
 
         const fixture = TestBed.createComponent(LoginComponent);
@@ -28,17 +28,17 @@ describe('LoginComponent', () => {
 
     describe('onSubmit()', () => {
         it('should not emit submit event', () => {
-            spyOn(component.submit, 'emit').and.stub();
+            spyOn(component.save, 'emit').and.stub();
             component.onSubmit();
-            expect(component.submit.emit).not.toHaveBeenCalled();
+            expect(component.save.emit).not.toHaveBeenCalled();
         });
 
 
         it('should emit submit event', () => {
-            spyOn(component.submit, 'emit');
+            spyOn(component.save, 'emit');
             component.form.controls['credentials'].setValue({ userName: 'testName', password: 'testPassword'});
             component.onSubmit();
-            expect(component.submit.emit).toHaveBeenCalled();
+            expect(component.save.emit).toHaveBeenCalled();
         });
     });
 });

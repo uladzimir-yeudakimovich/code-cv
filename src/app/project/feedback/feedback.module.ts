@@ -20,6 +20,6 @@ import { RegisterFormComponent } from './register-form/register-form.component';
         FeedbackComponent,
         MessagesComponent,
         RegisterFormComponent,
-    ]
+    ],
 })
 export class FeedbackModule {}

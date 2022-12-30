@@ -10,7 +10,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class LoginComponent {
     @Input() loading: boolean;
 
-    @Output() submit: EventEmitter<any> = new EventEmitter();
+    @Output() save: EventEmitter<any> = new EventEmitter();
 
     form: FormGroup = this.formBuilder.group({
         credentials: [null, [Validators.required]],
@@ -22,6 +22,6 @@ export class LoginComponent {
         if (this.form.invalid) {
             return;
         }
-        this.submit.emit(this.form.value.credentials);
+        this.save.emit(this.form.value.credentials);
     }
 }

@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { AppConfigService } from '../core/config/app-config.service';
 
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class AuthService {
     baseUrl: string;
@@ -21,7 +21,7 @@ export class AuthService {
         return new Observable(subscriber => {
             subscriber.next({
                 accessToken: 'accessToken',
-                username
+                username,
             });
         });
         // return this.http.post(baseUrl + 'login', {
@@ -34,7 +34,7 @@ export class AuthService {
         return new Observable(subscriber => {
             subscriber.next({
                 accessToken: 'accessToken',
-                username
+                username,
             });
         });
         // return this.http.post(baseUrl + 'registration', {

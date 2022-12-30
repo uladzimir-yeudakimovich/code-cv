@@ -21,7 +21,7 @@ describe('RegisterPageComponent', () => {
             ],
         }).overrideComponent(RegisterPageComponent, {
             set: {
-                template: '<div></div>'
+                template: '<div></div>',
             },
         });
         const fixture = TestBed.createComponent(RegisterPageComponent);

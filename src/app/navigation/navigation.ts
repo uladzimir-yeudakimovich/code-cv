@@ -6,9 +6,9 @@ import { TokenStorageService } from '../services/token-storage.service';
 @Component({
     selector: 'app-navigation',
     templateUrl: './navigation.html',
-    styleUrls: ['./navigation.scss']
+    styleUrls: ['./navigation.scss'],
 })
-export class NavigationComponent  implements OnInit, OnDestroy {
+export class NavigationComponent implements OnInit, OnDestroy {
     mobileQuery: MediaQueryList;
     title: string;
     isLoggedIn: boolean;

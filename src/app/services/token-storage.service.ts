@@ -5,7 +5,7 @@ const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class TokenStorageService {
     isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());

@@ -74,3 +74,17 @@ export class MocRouter {
         return Promise.resolve(true);
     }
 }
+
+export class MockLocalStorageService {
+    get() {
+        return '';
+    }
+
+    set(key: string, value: any, expiresInMinutes?: number) {
+        //
+    }
+
+    remove(key: string) {
+        //
+    }
+}

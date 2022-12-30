@@ -9,7 +9,8 @@ export class AuthGuard implements CanActivate {
     constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        if (!!this.tokenStorageService.getToken()) {
+        const token = !!this.tokenStorageService.getToken();
+        if (token) {
             return true;
         } else {
             this.router.navigate(['/']);

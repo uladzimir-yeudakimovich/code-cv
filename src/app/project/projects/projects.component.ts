@@ -7,7 +7,7 @@ import { Project } from '../../share/models/models';
 @Component({
     selector: 'app-projects',
     templateUrl: './projects.component.html',
-    styleUrls: ['./projects.component.scss']
+    styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent implements OnInit {
     data: Project[];
@@ -16,7 +16,7 @@ export class ProjectsComponent implements OnInit {
         loop: true,
         autoplay: true,
         autoplayTimeout: 5000,
-        autoplayHoverPause: true
+        autoplayHoverPause: true,
     };
 
     constructor(public dataService: DataService, public languageService: LanguageService) { }

@@ -27,6 +27,6 @@ import { RegisterPageComponent } from './register/containers/register-page.compo
         RegisterFormComponent,
         RegisterComponent,
         RegisterPageComponent,
-    ]
+    ],
 })
 export class MainModule { }

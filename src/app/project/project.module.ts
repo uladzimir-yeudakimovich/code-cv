@@ -22,6 +22,6 @@ import { FeedbackModule } from './feedback/feedback.module';
         FeedbackModule,
     ],
     providers: [],
-    bootstrap: []
+    bootstrap: [],
 })
 export class ProjectModule {}

@@ -17,6 +17,6 @@ import { AppConfigService } from './config/app-config.service';
         EffectsModule.forFeature([AppEffects]),
     ],
     providers: [AppConfigService],
-    bootstrap: []
+    bootstrap: [],
 })
 export class CoreModule {}
