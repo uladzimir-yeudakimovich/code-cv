@@ -8,7 +8,7 @@ const httpOptions = {
 };
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'any',
 })
 export class AuthService {
     baseUrl: string;
