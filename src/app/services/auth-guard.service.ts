@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { TokenStorageService } from './token-storage.service';
 
 @Injectable()
-export class AuthGuard  {
+export class AuthGuard {
 
     constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
 
