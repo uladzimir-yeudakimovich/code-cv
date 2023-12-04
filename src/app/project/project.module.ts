@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ProjectsComponent } from '../project/projects/projects.component';
 import { SharedModule } from '../share/shared.module';
 import { ContactsComponent } from './contacts/contacts.component';
@@ -18,6 +19,7 @@ import { FeedbackModule } from './feedback/feedback.module';
         CommonModule,
         TranslateModule,
         ReactiveFormsModule,
+        CarouselModule,
         SharedModule,
         FeedbackModule,
     ],
