@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +41,8 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient],
             },
         }),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
         MainModule,
         MaterialModule,
         SharedModule,
