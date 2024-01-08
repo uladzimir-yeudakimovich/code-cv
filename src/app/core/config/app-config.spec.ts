@@ -29,35 +29,35 @@ describe('AppConfigService', () => {
         service = appConfigService;
     }));
 
-    // describe('loadAppConfig()', () => {
-    //     let serializer;
-    //     let appConfig;
-    //     let serializedAppConfig;
-    //     const configsEqual = (config, compareToConfig) => Object.entries(config).every(([key, value]) => {
-    //         if (isFunction(value)) {
-    //             return isFunction(compareToConfig[key]);
-    //         } else {
-    //             return isEqual(value, compareToConfig[key]);
-    //         }
-    //     });
+    describe('loadAppConfig()', () => {
+        let serializer;
+        let appConfig;
+        let serializedAppConfig;
+        const configsEqual = (config, compareToConfig) => Object.entries(config).every(([key, value]) => {
+            if (isFunction(value)) {
+                return isFunction(compareToConfig[key]);
+            } else {
+                return isEqual(value, compareToConfig[key]);
+            }
+        });
 
-    //     beforeEach(() => {
-    //         serializer = new TypedJSON(AppConfig);
-    //         appConfig = cloneDeep(mockAppConfig);
-    //         serializedAppConfig = serializer.parse(appConfig);
-    //         spyOn(service.http, 'get').and.returnValue(of(JSON.stringify(appConfig)));
-    //     });
+        beforeEach(() => {
+            serializer = new TypedJSON(AppConfig);
+            appConfig = cloneDeep(mockAppConfig);
+            serializedAppConfig = serializer.parse(appConfig);
+            spyOn(service.http, 'get').and.returnValue(of(JSON.stringify(appConfig)));
+        });
 
-    //     it('should call to get the app config from the assets folder', () => {
-    //         service.loadAppConfig();
+        it('should call to get the app config from the assets folder', () => {
+            service.loadAppConfig();
 
-    //         expect(service.http.get).toHaveBeenCalledWith('/assets/config/app-config.json', {responseType: 'text'});
-    //     });
+            expect(service.http.get).toHaveBeenCalledWith('/assets/config/app-config-local.json', {responseType: 'text'});
+        });
 
-    //     it('should populate the loaded app config', waitForAsync(() => {
-    //         service.loadAppConfig().then(() => {
-    //             expect(configsEqual(service.loadAppConfig, serializedAppConfig)).toEqual(true);
-    //         });
-    //     }));
-    // });
+        it('should populate the loaded app config', waitForAsync(() => {
+            service.loadAppConfig().then(() => {
+                expect(configsEqual(service.loadAppConfig, serializedAppConfig)).toEqual(true);
+            });
+        }));
+    });
 });
