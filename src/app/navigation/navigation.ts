@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, Inject } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
-import { TokenStorageService } from '../services/token-storage.service';
+import { JwtService } from '../core/services/jwt.service';
 
 @Component({
     selector: 'app-navigation',
@@ -20,7 +20,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
         changeDetectorRef: ChangeDetectorRef,
         media: MediaMatcher,
         private router: Router,
-        private tokenStorageService: TokenStorageService,
+        private jwtService: JwtService,
     ) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -28,13 +28,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.tokenStorageService.isLoggedIn.subscribe(isLogin => {
+        this.jwtService.refreshComplete$.subscribe(isLogin => {
             this.isLoggedIn = isLogin;
-
-            if (isLogin) {
-                const { username } = this.tokenStorageService.getUser();
-                this.username = username;
-            }
+            this.username = this.jwtService.getUser().login;
         });
 
         this.router.events.subscribe(event => {
@@ -49,7 +45,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
 
     logout(): void {
-        this.tokenStorageService.logOut();
+        this.jwtService.logOut();
     }
 
     ngOnDestroy(): void {

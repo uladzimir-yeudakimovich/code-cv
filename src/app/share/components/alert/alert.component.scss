@@ -1,16 +1,19 @@
 @import "../../../styles/variables.scss";
 
+.alert{
+  position: absolute;
+  right: 0;
+  width: max-content;
+  padding: 20px;
+  margin: 20px;
+  color: $home-text-color;
+  border-radius: 30px;
+}
+
 .alert-danger {
   background-color: $alert-error-color;
 }
 
 .alert-success {
   background-color: $alert-success-color;
-}
-
-.alert{
-  padding: 20px;
-  color: $home-text-color;
-  margin-bottom: 15px;
-  text-align: center;
 }

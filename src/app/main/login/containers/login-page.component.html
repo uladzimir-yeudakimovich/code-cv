@@ -1,1 +1,7 @@
-<login (save)="onSubmit($event)"></login>
+<app-alert></app-alert>
+
+<login *ngIf="!isLoggedIn" (save)="onSubmit($event)"></login>
+
+<mat-card *ngIf="isLoggedIn">
+    <mat-card-content>You are already logged in.</mat-card-content>
+</mat-card>

@@ -11,6 +11,8 @@ export class AppConfig {
 export class ServiceConfig {
     @jsonMember
         baseCVServiceUrl: StringConfigProperty;
+    @jsonMember
+        baseFirebaseUrl: StringConfigProperty;
 }
 
 @jsonObject
@@ -27,6 +29,4 @@ export class GlobalConfig {
         authRedirectUri: StringConfigProperty;
     @jsonMember
         authLogoutUri: StringConfigProperty;
-    // @jsonArrayMember(MapConfigProperty)
-    //     enumResources: MapConfigProperty<JsonSchemaResourceConfig>[];
 }

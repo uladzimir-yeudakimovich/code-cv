@@ -10,20 +10,11 @@
   right: 0;
 }
 
-::ng-deep .mat-toolbar.mat-primary {
-  display: flex;
-  justify-content: space-between;
-}
-
 .app-is-mobile .app-toolbar {
   display: flex;
   justify-content: space-between;
   position: fixed;
   z-index: 2;
-}
-
-h1.app-name {
-  margin-left: 8px;
 }
 
 .app-sidenav-container {
@@ -32,4 +23,10 @@ h1.app-name {
 
 .app-is-mobile .app-sidenav-container {
   flex: 1 0 auto;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }

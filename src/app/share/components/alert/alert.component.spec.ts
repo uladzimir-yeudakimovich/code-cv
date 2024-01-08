@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AlertService } from 'src/app/services/alert.service';
-import { MocAlertService } from 'src/app/testing/mock-service.spec';
+import { MockAlertService } from 'src/app/testing/mock-service.spec';
 import { AlertComponent } from './alert.component';
 
 describe('AlertComponent', () => {
@@ -11,7 +11,7 @@ describe('AlertComponent', () => {
             declarations: [AlertComponent],
             imports: [],
             providers: [
-                {provide: AlertService, useClass: MocAlertService},
+                {provide: AlertService, useClass: MockAlertService},
             ],
         }).overrideComponent(AlertComponent, {
             set: {

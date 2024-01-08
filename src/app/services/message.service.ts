@@ -1,32 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { TokenStorageService } from './token-storage.service';
+import { AppConfigService } from '../core/config/app-config.service';
+import { JwtService } from '../core/services/jwt.service';
 import { Feedback } from '../share/models/models';
+
+const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'SkipAuthorization': 'true',
+});
 
 @Injectable({
     providedIn: 'root',
 })
 export class MessageService {
-    headers = new HttpHeaders({'Content-Type': 'application/json'});
+    baseFirebaseUrl: string;
     messages: Feedback[];
 
-    constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) { }
+    constructor(appConfigService: AppConfigService, private http: HttpClient, private jwtService: JwtService) {
+        appConfigService.getAppConfig().subscribe(appConfig => {
+            this.baseFirebaseUrl = appConfig.serviceConfig.baseFirebaseUrl.value;
+        });
+    }
 
     getMessages() {
-        return this.http.get('https://portfolio-57f5d.firebaseio.com/messages.json');
+        return this.http.get(`${this.baseFirebaseUrl}/messages.json`, { headers });
     }
 
     updateMessage(message: Feedback) {
-        const { username } = this.tokenStorageService.getUser();
+        const { username } = this.jwtService.getUser();
         message.time = new Date();
         message.name = username;
         this.messages.push(message);
 
         return this.http.put(
-            'https://portfolio-57f5d.firebaseio.com/messages.json',
+            `${this.baseFirebaseUrl}/messages.json`,
             this.messages,
-            { headers: this.headers }
+            { headers }
         );
     }
 }

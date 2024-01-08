@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../../services/auth.service';
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { JwtService } from '../../../core/services/jwt.service';
 import { AlertService } from '../../../services/alert.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class RegisterPageComponent {
 
     constructor(
         private authService: AuthService,
-        private tokenStorage: TokenStorageService,
+        private tokenStorage: JwtService,
         private alertService: AlertService,
         private router: Router,
     ) { }
@@ -23,13 +23,11 @@ export class RegisterPageComponent {
 
         this.authService.register(username, email, password).subscribe(
             data => {
-                this.tokenStorage.saveUser(data);
-                this.tokenStorage.saveToken(data.accessToken);
-                this.alertService.success(`Your registration is successful as ${data.username}!`);
+                this.tokenStorage.saveUserData(data);
                 this.router.navigate(['/home']);
             },
             err => {
-                this.alertService.error(err.error.message || err.statusText);
+                this.alertService.setMessage('error', err.error.message || err.statusText);
             }
         );
     }

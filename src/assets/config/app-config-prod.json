@@ -4,15 +4,19 @@
             "value": "prod"
         },
         "authRedirectUri": {
-            "value": "https://uladzimir-yeudakimovich.herokuapp.com/auth"
+            "value": "https://uladzimir-yeudakimovich.herokuapp.com/login"
         },
         "authLogoutUri": {
-            "value": "https://uladzimir-yeudakimovich.herokuapp.com/sign-out"
+            "value": "https://uladzimir-yeudakimovich.herokuapp.com"
         }
     },
     "serviceConfig": {
         "baseCVServiceUrl": {
-            "value": "http://uladzimir-yeudakimovich.herokuapp.com/",
+            "value": "http://uladzimir-yeudakimovich.herokuapp.com",
+            "overrideAble": true
+        },
+        "baseFirebaseUrl": {
+            "value": "https://portfolio-57f5d.firebaseio.com",
             "overrideAble": true
         }
     },

@@ -1,6 +1,7 @@
 <div
-  *ngIf="message"
-  [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }"
+  *ngIf="notification"
+  class="alert"
+  [ngClass]="{ 'alert-success': notification.type === 'success', 'alert-danger': notification.type === 'error' }"
 >
-  {{message.text}}
+  <b>{{ notification.message | uppercase }}</b>
 </div>

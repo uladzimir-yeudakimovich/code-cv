@@ -4,7 +4,6 @@ import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-m
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
 import { ChangeLanguageComponent } from './components/change-language/change-language';
-import { AuthGuard } from '../services/auth-guard.service';
 import { MaterialModule } from '../material.module';
 
 @NgModule({
@@ -27,6 +26,6 @@ import { MaterialModule } from '../material.module';
         MatMenuModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthGuard],
+    providers: [],
 })
 export class SharedModule {}

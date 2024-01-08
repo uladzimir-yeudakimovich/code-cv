@@ -30,5 +30,9 @@ export const mockAppConfig: AppConfig = {
             value: '',
             override: true,
         },
+        baseFirebaseUrl: {
+            value: '',
+            override: true,
+        },
     },
 };

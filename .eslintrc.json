@@ -73,7 +73,7 @@
               "requireLast": true
             },
             "singleline": {
-              "delimiter": "coma",
+              "delimiter": "comma",
               "requireLast": false
             }
           }

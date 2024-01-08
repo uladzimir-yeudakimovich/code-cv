@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { MocAlertService, MocAuthService, MocRouter, MocTokenStorageService } from 'src/app/testing/mock-service.spec';
+import { AuthService } from '@core/services/auth.service';
+import { JwtService } from '@core/services/jwt.service';
+import { MockAlertService, MockAuthService, MockRouter, MockJwtService } from 'src/app/testing/mock-service.spec';
 import { RegisterPageComponent } from './register-page.component';
 
 describe('RegisterPageComponent', () => {
@@ -14,10 +14,10 @@ describe('RegisterPageComponent', () => {
             declarations: [RegisterPageComponent],
             imports: [],
             providers: [
-                {provide: AuthService, useClass: MocAuthService},
-                {provide: TokenStorageService, useClass: MocTokenStorageService},
-                {provide: AlertService, useClass: MocAlertService},
-                {provide: Router, useClass: MocRouter},
+                {provide: AuthService, useClass: MockAuthService},
+                {provide: JwtService, useClass: MockJwtService},
+                {provide: AlertService, useClass: MockAlertService},
+                {provide: Router, useClass: MockRouter},
             ],
         }).overrideComponent(RegisterPageComponent, {
             set: {
