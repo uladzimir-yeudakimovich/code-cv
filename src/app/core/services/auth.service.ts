@@ -16,7 +16,7 @@ export class AuthService {
 
     constructor(appConfigService: AppConfigService, private http: HttpClient) {
         appConfigService.getAppConfig().subscribe(appConfig => {
-            this.baseUrl = appConfig.serviceConfig.baseCVServiceUrl.value;
+            this.baseUrl = appConfig.globalConfig.authRedirectUri.value;
         });
     }
 

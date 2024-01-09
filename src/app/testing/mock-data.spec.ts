@@ -25,14 +25,19 @@ export const mockInformation: InformationResponse = {
 };
 
 export const mockAppConfig: AppConfig = {
-    serviceConfig: {
-        baseCVServiceUrl: {
-            value: '',
-            override: true,
+    globalConfig: {
+        env: {
+            value: 'local',
         },
+        authRedirectUri: {
+            value: 'http://localhost:4000',
+        },
+    },
+    serviceConfig: {
         baseFirebaseUrl: {
             value: '',
             override: true,
         },
     },
+    hiddenServiceConfig: {},
 };

@@ -1,24 +1,14 @@
-import { jsonArrayMember, jsonMember, jsonObject } from 'typedjson';
+import { jsonMember, jsonObject } from 'typedjson';
 import { BooleanConfigProperty, MapConfigProperty, StringConfigProperty } from './app-config-property.models';
 
 @jsonObject
 export class AppConfig {
     @jsonMember
+        globalConfig: GlobalConfig;
+    @jsonMember
         serviceConfig: ServiceConfig;
-}
-
-@jsonObject
-export class ServiceConfig {
     @jsonMember
-        baseCVServiceUrl: StringConfigProperty;
-    @jsonMember
-        baseFirebaseUrl: StringConfigProperty;
-}
-
-@jsonObject
-export class HiddenServiceConfig {
-    @jsonMember
-        feedBackService: BooleanConfigProperty;
+        hiddenServiceConfig: HiddenServiceConfig;
 }
 
 @jsonObject
@@ -27,6 +17,13 @@ export class GlobalConfig {
         env: StringConfigProperty;
     @jsonMember
         authRedirectUri: StringConfigProperty;
-    @jsonMember
-        authLogoutUri: StringConfigProperty;
 }
+
+@jsonObject
+export class ServiceConfig {
+    @jsonMember
+        baseFirebaseUrl: StringConfigProperty;
+}
+
+@jsonObject
+export class HiddenServiceConfig {}

@@ -20,7 +20,7 @@ export class JwtService {
 
     constructor(private http: HttpClient, private router: Router, appConfigService: AppConfigService) {
         appConfigService.getAppConfig().subscribe(appConfig => {
-            this.baseUrl = appConfig.serviceConfig.baseCVServiceUrl.value;
+            this.baseUrl = appConfig.globalConfig.authRedirectUri.value;
         });
     }
 

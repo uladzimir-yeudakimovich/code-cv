@@ -4,17 +4,10 @@
             "value": "local"
         },
         "authRedirectUri": {
-            "value": "http://localhost:4000/login"
-        },
-        "authLogoutUri": {
             "value": "http://localhost:4000"
         }
     },
     "serviceConfig": {
-        "baseCVServiceUrl": {
-            "value": "http://localhost:4000",
-            "overrideAble": true
-        },
         "baseFirebaseUrl": {
             "value": "https://portfolio-57f5d.firebaseio.com",
             "overrideAble": true
