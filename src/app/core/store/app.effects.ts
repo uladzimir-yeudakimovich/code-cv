@@ -6,7 +6,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import * as actions from './app.action';
 import { DataService } from '../../services/data.service';
-import { InformationResponse } from '../../share/models/models';
+import { InformationResponse } from '../../shared/models/models';
 
 @Injectable()
 export class AppEffects {

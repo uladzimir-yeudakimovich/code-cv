@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
-import { CVAUtils } from 'src/app/share/utils/cva.utils';
+import { CVAUtils } from 'src/app/shared/utils/cva.utils';
 import { RegisterFormComponent } from './register-form.component';
 
 describe('LoginComponent', () => {

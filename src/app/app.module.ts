@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
 import { MainModule } from './main/main.module';
 import { MaterialModule } from './material.module';
-import { SharedModule } from './share/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { ProjectModule } from './project/project.module';
 import { NavigationComponent } from './navigation/navigation';
 

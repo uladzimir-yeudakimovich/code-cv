@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { InformationResponse } from '../share/models/models';
+import { InformationResponse } from '../shared/models/models';
 import { AppConfigService } from '../core/config/app-config.service';
 
 const httpOptions = {

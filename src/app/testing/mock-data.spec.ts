@@ -1,5 +1,5 @@
 import { AppConfig } from '../core/config/app-config';
-import { InformationResponse } from '../share/models/models';
+import { InformationResponse } from '../shared/models/models';
 
 export const mockInformation: InformationResponse = {
     education: [

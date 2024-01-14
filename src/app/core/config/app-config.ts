@@ -1,5 +1,5 @@
 import { jsonMember, jsonObject } from 'typedjson';
-import { BooleanConfigProperty, MapConfigProperty, StringConfigProperty } from './app-config-property.models';
+import { StringConfigProperty } from './app-config-property.models';
 
 @jsonObject
 export class AppConfig {

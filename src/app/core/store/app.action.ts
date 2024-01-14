@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { AppConfig } from '../config/app-config';
-import { InformationResponse } from '../../share/models/models';
+import { InformationResponse } from '../../shared/models/models';
 
 
 export enum ActionTypes {

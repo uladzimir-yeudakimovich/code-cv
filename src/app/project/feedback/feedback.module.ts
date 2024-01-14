@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from '../../share/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 import { FeedbackComponent } from './feedback.component';
 import { MessagesComponent } from './messages/messages.component';

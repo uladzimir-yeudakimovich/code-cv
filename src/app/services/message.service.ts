@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AppConfigService } from '../core/config/app-config.service';
 import { JwtService } from '../core/services/jwt.service';
-import { Feedback } from '../share/models/models';
+import { Feedback } from '../shared/models/models';
 
 const headers = new HttpHeaders({
     'Content-Type': 'application/json',

@@ -1,4 +1,4 @@
-import { InformationResponse } from '../../share/models/models';
+import { InformationResponse } from '../../shared/models/models';
 import { AppConfig } from '../config/app-config';
 import * as AppActions from './app.action';
 

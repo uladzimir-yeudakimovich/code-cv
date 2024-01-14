@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { LanguageService } from '../../services/language.service';
-import { InformationResponse, Info, Competence } from '../../share/models/models';
+import { InformationResponse, Info, Competence } from '../../shared/models/models';
 
 @Component({
     selector: 'app-home',

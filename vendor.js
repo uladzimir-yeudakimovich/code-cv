@@ -2358,7 +2358,7 @@ function getPluralCategory(value, cases, ngLocalization, locale) {
  */
 var NgLocaleLocalization = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__extends"])(NgLocaleLocalization, _super);
-    function NgLocaleLocalization(locale, 
+    function NgLocaleLocalization(locale,
     /** @deprecated from v5 */
     deprecatedPluralFn) {
         var _this = _super.call(this) || this;
@@ -6733,7 +6733,7 @@ var HttpResponse = /** @class */ (function (_super) {
 var HttpErrorResponse = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(HttpErrorResponse, _super);
     function HttpErrorResponse(init) {
-        var _this = 
+        var _this =
         // Initialize with a default status of 0 / Unknown Error.
         _super.call(this, init, 0, 'Unknown Error') || this;
         _this.name = 'HttpErrorResponse';
@@ -19575,7 +19575,7 @@ var NgModuleProviderAnalyzer = /** @class */ (function () {
             var ngModuleProvider = { token: { identifier: ngModuleType }, useClass: ngModuleType };
             _resolveProviders([ngModuleProvider], ProviderAstType.PublicService, true, sourceSpan, _this._errors, _this._allProviders, /* isModule */ true);
         });
-        _resolveProviders(ngModule.transitiveModule.providers.map(function (entry) { return entry.provider; }).concat(extraProviders), ProviderAstType.PublicService, false, sourceSpan, this._errors, this._allProviders, 
+        _resolveProviders(ngModule.transitiveModule.providers.map(function (entry) { return entry.provider; }).concat(extraProviders), ProviderAstType.PublicService, false, sourceSpan, this._errors, this._allProviders,
         /* isModule */ false);
     }
     NgModuleProviderAnalyzer.prototype.parse = function () {
@@ -23560,7 +23560,7 @@ var ConvertActionBindingResult = /** @class */ (function () {
     /**
      * Render2 compatible statements,
      */
-    stmts, 
+    stmts,
     /**
      * Variable name used with render2 compatible statements.
      */
@@ -25424,7 +25424,7 @@ var FixupExpression = /** @class */ (function (_super) {
     return FixupExpression;
 }(Expression));
 /**
- * A constant pool allows a code emitter to share constant in an output context.
+ * A constant pool allows a code emitter to shared constant in an output context.
  *
  * The constant pool also supports sharing access to ivy definitions references.
  */
@@ -26238,15 +26238,15 @@ function compileNgModuleFromRender2(ctx, ngModule, injectableCompiler) {
     });
     var injectorDef = importExpr(Identifiers$1.defineInjector).callFn([injectorDefArg]);
     ctx.statements.push(new ClassStmt(
-    /* name */ className, 
-    /* parent */ null, 
+    /* name */ className,
+    /* parent */ null,
     /* fields */ [new ClassField(
-        /* name */ 'ngInjectorDef', 
-        /* type */ INFERRED_TYPE, 
-        /* modifiers */ [StmtModifier.Static], 
-        /* initializer */ injectorDef)], 
-    /* getters */ [], 
-    /* constructorMethod */ new ClassMethod(null, [], []), 
+        /* name */ 'ngInjectorDef',
+        /* type */ INFERRED_TYPE,
+        /* modifiers */ [StmtModifier.Static],
+        /* initializer */ injectorDef)],
+    /* getters */ [],
+    /* constructorMethod */ new ClassMethod(null, [], []),
     /* methods */ []));
 }
 function tupleTypeOf(exp) {
@@ -26302,15 +26302,15 @@ function compilePipeFromRender2(outputCtx, pipe, reflector) {
     var res = compilePipeFromMetadata(metadata);
     var definitionField = outputCtx.constantPool.propertyNameOf(3 /* Pipe */);
     outputCtx.statements.push(new ClassStmt(
-    /* name */ name, 
-    /* parent */ null, 
+    /* name */ name,
+    /* parent */ null,
     /* fields */ [new ClassField(
-        /* name */ definitionField, 
-        /* type */ INFERRED_TYPE, 
-        /* modifiers */ [StmtModifier.Static], 
-        /* initializer */ res.expression)], 
-    /* getters */ [], 
-    /* constructorMethod */ new ClassMethod(null, [], []), 
+        /* name */ definitionField,
+        /* type */ INFERRED_TYPE,
+        /* modifiers */ [StmtModifier.Static],
+        /* initializer */ res.expression)],
+    /* getters */ [],
+    /* constructorMethod */ new ClassMethod(null, [], []),
     /* methods */ []));
 }
 
@@ -26742,7 +26742,7 @@ var NonBindableVisitor$1 = /** @class */ (function () {
             return null;
         }
         var children = visitAll(this, ast.children, null);
-        return new Element$1(ast.name, visitAll(this, ast.attrs), 
+        return new Element$1(ast.name, visitAll(this, ast.attrs),
         /* inputs */ [], /* outputs */ [], children, /* references */ [], ast.sourceSpan, ast.startSourceSpan, ast.endSourceSpan);
     };
     NonBindableVisitor.prototype.visitComment = function (comment) { return null; };
@@ -27858,7 +27858,7 @@ function compileComponentFromMetadata(meta, constantPool, bindingParser) {
     if (firstSelector) {
         var selectorAttributes = firstSelector.getAttrs();
         if (selectorAttributes.length) {
-            definitionMap.set('attrs', constantPool.getConstLiteral(literalArr(selectorAttributes.map(function (value) { return value != null ? literal(value) : literal(undefined); })), 
+            definitionMap.set('attrs', constantPool.getConstLiteral(literalArr(selectorAttributes.map(function (value) { return value != null ? literal(value) : literal(undefined); })),
             /* forceShared */ true));
         }
     }
@@ -30256,7 +30256,7 @@ var StaticReflector = /** @class */ (function () {
                     var requiredAnnotationTypes = this.annotationForParentClassWithSummaryKind.get(summary.type.summaryKind);
                     var typeHasRequiredAnnotation = requiredAnnotationTypes.some(function (requiredType) { return ownAnnotations_1.some(function (ann) { return requiredType.isTypeOf(ann); }); });
                     if (!typeHasRequiredAnnotation) {
-                        this.reportError(formatMetadataError(metadataError("Class " + type.name + " in " + type.filePath + " extends from a " + CompileSummaryKind[summary.type.summaryKind] + " in another compilation unit without duplicating the decorator", 
+                        this.reportError(formatMetadataError(metadataError("Class " + type.name + " in " + type.filePath + " extends from a " + CompileSummaryKind[summary.type.summaryKind] + " in another compilation unit without duplicating the decorator",
                         /* summary */ undefined, "Please add a " + requiredAnnotationTypes.map(function (type) { return type.ngMetadataName; }).join(' or ') + " decorator to the class"), type), type);
                     }
                 }
@@ -34328,12 +34328,12 @@ function resolveToken(token, record, records, parent, notFoundValue, flags) {
                     var childRecord = options & 2 /* CheckSelf */ ? records.get(depRecord.token) : undefined;
                     deps.push(tryResolveToken(
                     // Current Token to resolve
-                    depRecord.token, 
+                    depRecord.token,
                     // A record which describes how to resolve the token.
                     // If undefined, this means we don't have such a record
-                    childRecord, 
+                    childRecord,
                     // Other records we know about.
-                    records, 
+                    records,
                     // If we don't know how to resolve dependency and we should not check parent for it,
                     // than pass in Null injector.
                     !childRecord && !(options & 4 /* CheckParent */) ? NULL_INJECTOR : parent, options & 1 /* Optional */ ? null : Injector.THROW_IF_NOT_FOUND, 0 /* Default */));
@@ -34597,7 +34597,7 @@ function preR3NgModuleCompile(moduleType, metadata) {
 /**
  * @Annotation
  */
-var NgModule = makeDecorator('NgModule', function (ngModule) { return ngModule; }, undefined, undefined, 
+var NgModule = makeDecorator('NgModule', function (ngModule) { return ngModule; }, undefined, undefined,
 /**
  * Decorator that marks the following class as an NgModule, and supplies
  * configuration metadata for it.
@@ -35181,7 +35181,7 @@ var ResolvedReflectiveFactory = /** @class */ (function () {
     /**
      * Factory function which can return an instance of an object represented by a key.
      */
-    factory, 
+    factory,
     /**
      * Arguments (dependencies) to the `factory` function.
      */
@@ -41666,7 +41666,7 @@ function getComponentViewDefinitionFactory(componentFactory) {
 var ComponentFactory_ = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(ComponentFactory_, _super);
     function ComponentFactory_(selector, componentType, viewDefFactory, _inputs, _outputs, ngContentSelectors) {
-        var _this = 
+        var _this =
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;
@@ -44614,7 +44614,7 @@ function cloneNgModuleDefinition(def) {
 var NgModuleFactory_ = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(NgModuleFactory_, _super);
     function NgModuleFactory_(moduleType, _bootstrapComponents, _ngModuleDefFactory) {
-        var _this = 
+        var _this =
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;
@@ -49544,7 +49544,7 @@ var ComponentRef$1 = /** @class */ (function (_super) {
 var NG_ELEMENT_ID = '__NG_ELEMENT_ID__';
 /**
  * The number of slots in each bloom filter (used by DI). The larger this number, the fewer
- * directives that will share slots, and thus, the fewer false positives when checking for
+ * directives that will shared slots, and thus, the fewer false positives when checking for
  * the existence of a directive.
  */
 var BLOOM_SIZE = 256;
@@ -49566,7 +49566,7 @@ function bloomAdd(injector, type) {
     }
     // We only have BLOOM_SIZE (256) slots in our bloom filter (8 buckets * 32 bits each),
     // so all unique IDs must be modulo-ed into a number from 0 - 255 to fit into the filter.
-    // This means that after 255, some directives will share slots, leading to some false positives
+    // This means that after 255, some directives will shared slots, leading to some false positives
     // when checking for a directive's presence.
     var bloomBit = id % BLOOM_SIZE;
     // Create a mask that targets the specific bit associated with the directive.
@@ -49869,7 +49869,7 @@ function searchMatchesQueuedForCreation(node, token) {
  *
  * When the directive was added to the bloom filter, it was given a unique ID that can be
  * retrieved on the class. Since there are only BLOOM_SIZE slots per bloom filter, the directive's
- * ID must be modulo-ed by BLOOM_SIZE to get the correct bloom bit (directives share slots after
+ * ID must be modulo-ed by BLOOM_SIZE to get the correct bloom bit (directives shared slots after
  * BLOOM_SIZE is reached).
  *
  * @param type The directive type
@@ -49886,7 +49886,7 @@ function bloomHashBit(type) {
  * check and a starting injector, this function traverses up injectors until it finds an
  * injector that contains a 1 for that bit in its bloom filter. A 1 indicates that the
  * injector may have that directive. It only *may* have the directive because directives begin
- * to share bloom filter bits after the BLOOM_SIZE is reached, and it could correspond to a
+ * to shared bloom filter bits after the BLOOM_SIZE is reached, and it could correspond to a
  * different directive sharing the bit.
  *
  * Note: We can skip checking further injectors up the tree if an injector's cbf structure
@@ -64900,7 +64900,7 @@ NgbModalRef = /** @class */ (function () {
             }
         },
         // only needed to keep TS1.8 compatibility
-        set: 
+        set:
         // only needed to keep TS1.8 compatibility
         function (instance) { },
         enumerable: true,
@@ -68033,7 +68033,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "positionElements", function() { return positionElements; });
 // previous version:
 // https://github.com/angular-ui/bootstrap/blob/07c31d0731f7cb068a1932b8e01d2312b796b4ec/src/position/position.js
-var 
+var
 // previous version:
 // https://github.com/angular-ui/bootstrap/blob/07c31d0731f7cb068a1932b8e01d2312b796b4ec/src/position/position.js
 Positioning = /** @class */ (function () {
@@ -68164,7 +68164,7 @@ Positioning = /** @class */ (function () {
     };
     // get the availble placements of the target element in the viewport dependeing on the host element
     // get the availble placements of the target element in the viewport dependeing on the host element
-    Positioning.prototype.getAvailablePlacements = 
+    Positioning.prototype.getAvailablePlacements =
     // get the availble placements of the target element in the viewport dependeing on the host element
     function (hostElement, targetElement) {
         var availablePlacements = [];
@@ -76702,9 +76702,9 @@ var SequenceEqualCompareToSubscriber = /*@__PURE__*/ (function (_super) {
 
 /***/ "./node_modules/rxjs/_esm5/internal/operators/share.js":
 /*!*************************************************************!*\
-  !*** ./node_modules/rxjs/_esm5/internal/operators/share.js ***!
+  !*** ./node_modules/rxjs/_esm5/internal/operators/shared.js ***!
   \*************************************************************/
-/*! exports provided: share */
+/*! exports provided: shared */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76723,7 +76723,7 @@ function shareSubjectFactory() {
 function share() {
     return function (source) { return Object(_refCount__WEBPACK_IMPORTED_MODULE_1__["refCount"])()(Object(_multicast__WEBPACK_IMPORTED_MODULE_0__["multicast"])(shareSubjectFactory)(source)); };
 }
-//# sourceMappingURL=share.js.map
+//# sourceMappingURL=shared.js.map
 
 
 /***/ }),
@@ -80512,7 +80512,7 @@ function tryCatch(fn) {
 /*!****************************************************!*\
   !*** ./node_modules/rxjs/_esm5/operators/index.js ***!
   \****************************************************/
-/*! exports provided: audit, auditTime, buffer, bufferCount, bufferTime, bufferToggle, bufferWhen, catchError, combineAll, combineLatest, concat, concatAll, concatMap, concatMapTo, count, debounce, debounceTime, defaultIfEmpty, delay, delayWhen, dematerialize, distinct, distinctUntilChanged, distinctUntilKeyChanged, elementAt, endWith, every, exhaust, exhaustMap, expand, filter, finalize, find, findIndex, first, groupBy, ignoreElements, isEmpty, last, map, mapTo, materialize, max, merge, mergeAll, mergeMap, flatMap, mergeMapTo, mergeScan, min, multicast, observeOn, onErrorResumeNext, pairwise, partition, pluck, publish, publishBehavior, publishLast, publishReplay, race, reduce, repeat, repeatWhen, retry, retryWhen, refCount, sample, sampleTime, scan, sequenceEqual, share, shareReplay, single, skip, skipLast, skipUntil, skipWhile, startWith, subscribeOn, switchAll, switchMap, switchMapTo, take, takeLast, takeUntil, takeWhile, tap, throttle, throttleTime, throwIfEmpty, timeInterval, timeout, timeoutWith, timestamp, toArray, window, windowCount, windowTime, windowToggle, windowWhen, withLatestFrom, zip, zipAll */
+/*! exports provided: audit, auditTime, buffer, bufferCount, bufferTime, bufferToggle, bufferWhen, catchError, combineAll, combineLatest, concat, concatAll, concatMap, concatMapTo, count, debounce, debounceTime, defaultIfEmpty, delay, delayWhen, dematerialize, distinct, distinctUntilChanged, distinctUntilKeyChanged, elementAt, endWith, every, exhaust, exhaustMap, expand, filter, finalize, find, findIndex, first, groupBy, ignoreElements, isEmpty, last, map, mapTo, materialize, max, merge, mergeAll, mergeMap, flatMap, mergeMapTo, mergeScan, min, multicast, observeOn, onErrorResumeNext, pairwise, partition, pluck, publish, publishBehavior, publishLast, publishReplay, race, reduce, repeat, repeatWhen, retry, retryWhen, refCount, sample, sampleTime, scan, sequenceEqual, shared, shareReplay, single, skip, skipLast, skipUntil, skipWhile, startWith, subscribeOn, switchAll, switchMap, switchMapTo, take, takeLast, takeUntil, takeWhile, tap, throttle, throttleTime, throwIfEmpty, timeInterval, timeout, timeoutWith, timestamp, toArray, window, windowCount, windowTime, windowToggle, windowWhen, withLatestFrom, zip, zipAll */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80729,7 +80729,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _internal_operators_sequenceEqual__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ../internal/operators/sequenceEqual */ "./node_modules/rxjs/_esm5/internal/operators/sequenceEqual.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sequenceEqual", function() { return _internal_operators_sequenceEqual__WEBPACK_IMPORTED_MODULE_69__["sequenceEqual"]; });
 
-/* harmony import */ var _internal_operators_share__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ../internal/operators/share */ "./node_modules/rxjs/_esm5/internal/operators/share.js");
+/* harmony import */ var _internal_operators_share__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ../internal/operators/shared */ "./node_modules/rxjs/_esm5/internal/operators/share.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "share", function() { return _internal_operators_share__WEBPACK_IMPORTED_MODULE_70__["share"]; });
 
 /* harmony import */ var _internal_operators_shareReplay__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ../internal/operators/shareReplay */ "./node_modules/rxjs/_esm5/internal/operators/shareReplay.js");
