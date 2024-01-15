@@ -8,7 +8,7 @@ import { AlertService } from '../../../services/alert.service';
 @Component({
     selector: 'login-page',
     templateUrl: './login-page.component.html',
-    styleUrls: ['./login-page.component.scss'],
+    styleUrls: ['../../../styles/styles.scss'],
 })
 export class LoginPageComponent implements OnInit {
     isLoggedIn: boolean;

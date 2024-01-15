@@ -8,6 +8,7 @@ import { HomeComponent } from './project/home/home.component';
 import { ProjectsComponent } from './project/projects/projects.component';
 import { ContactsComponent } from './project/contacts/contacts.component';
 import { FeedbackComponent } from './project/feedback/feedback.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginPageComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
     { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

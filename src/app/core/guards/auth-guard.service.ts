@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { JwtService } from '../services/jwt.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthGuard {
 
     constructor(private jwtService: JwtService, private router: Router) { }

@@ -9,7 +9,7 @@
     },
     "serviceConfig": {
         "baseFirebaseUrl": {
-            "value": "https://portfolio-57f5d.firebaseio.com",
+            "value": "http://localhost:4000/api/v1",
             "overrideAble": true
         }
     },

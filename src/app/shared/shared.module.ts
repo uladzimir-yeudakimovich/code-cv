@@ -5,11 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
 import { ChangeLanguageComponent } from './components/change-language/change-language';
 import { MaterialModule } from '../material.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
     declarations: [
         AlertComponent,
         ChangeLanguageComponent,
+        NotFoundComponent,
     ],
     imports: [
         CommonModule,

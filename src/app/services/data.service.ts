@@ -7,7 +7,6 @@ import { AppConfigService } from '../core/config/app-config.service';
 const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'SkipAuthorization': 'true',
     }),
 };
 
@@ -24,7 +23,7 @@ export class DataService {
     }
 
     getInformation(): Observable<InformationResponse> {
-        return this.http.get<InformationResponse>(`${this.baseFirebaseUrl}/information.json`, httpOptions);
+        return this.http.get<InformationResponse>(`${this.baseFirebaseUrl}/information`, httpOptions);
     }
 
     getProjects() {
