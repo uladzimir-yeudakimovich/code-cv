@@ -6,6 +6,7 @@ export const selectAppState = createFeatureSelector<AppState>('app');
 export const selectInformation = createSelector(selectAppState, state => state.generalInfo);
 
 export const selectAppConfig = createSelector(selectAppState, state => state.appConfig);
+export const selectVisibleServiceNavigationItems = createSelector(selectAppState, state => state.appConfig.hiddenServiceConfig);
 
 const selectChangeIndicatorState = createSelector(selectAppState, state => state.changeIndicator);
 export const selectInformationLoadInProgress = (actionTypes: string[]) => createSelector(

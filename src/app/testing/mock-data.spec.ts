@@ -1,5 +1,5 @@
 import { AppConfig } from '../core/config/app-config';
-import { InformationResponse } from '../share/models/models';
+import { InformationResponse } from '../shared/models/models';
 
 export const mockInformation: InformationResponse = {
     education: [
@@ -25,10 +25,19 @@ export const mockInformation: InformationResponse = {
 };
 
 export const mockAppConfig: AppConfig = {
+    globalConfig: {
+        env: {
+            value: 'local',
+        },
+        authRedirectUri: {
+            value: 'http://localhost:4000',
+        },
+    },
     serviceConfig: {
-        baseCVServiceUrl: {
+        baseFirebaseUrl: {
             value: '',
             override: true,
         },
     },
+    hiddenServiceConfig: {},
 };

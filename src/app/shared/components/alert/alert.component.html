@@ -1,0 +1,7 @@
+<div
+  *ngIf="notification"
+  class="alert"
+  [ngClass]="{ 'alert-success': notification.type === 'success', 'alert-danger': notification.type === 'error' }"
+>
+  <b>{{ notification.message | uppercase }}</b>
+</div>

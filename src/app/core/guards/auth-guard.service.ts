@@ -1,19 +1,20 @@
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { TokenStorageService } from './token-storage.service';
+import { JwtService } from '../services/jwt.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthGuard {
 
-    constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
+    constructor(private jwtService: JwtService, private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        const token = !!this.tokenStorageService.getToken();
+        const token = !!this.jwtService.getToken();
         if (token) {
             return true;
         } else {
             this.router.navigate(['/']);
+            return false;
         }
     }
 }

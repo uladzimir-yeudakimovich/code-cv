@@ -1,6 +1,32 @@
 import {of, Subject} from 'rxjs';
 
-export class MocAuthService {
+export class MockAppConfigService {
+    loadAppConfig() {
+        return of();
+    }
+
+    getAppConfig() {
+        return of();
+    }
+}
+
+export class MockAuthGuard {
+    canActivate() {
+        return of();
+    }
+}
+
+export class MockAuthenticationInterceptor {
+    intercept() {
+        return of();
+    }
+
+    addAuthenticationToken() {
+        return of();
+    }
+}
+
+export class MockAuthService {
     login() {
         return of();
     }
@@ -10,18 +36,8 @@ export class MocAuthService {
     }
 }
 
-export class MocAlertService {
-    getMessage() {
-        return of();
-    }
-}
-
-export class MocTokenStorageService {
-    logOut() {
-        return of();
-    }
-
-    saveToken() {
+export class MockJwtService {
+    saveUserData() {
         return of();
     }
 
@@ -29,11 +45,47 @@ export class MocTokenStorageService {
         return of();
     }
 
-    saveUser() {
+    getUser() {
         return of();
     }
 
-    getUser() {
+    isRefreshTokenExpired() {
+        return of();
+    }
+
+    updateAccessToken() {
+        return of();
+    }
+
+    dispatchRefreshSession() {
+        return of();
+    }
+
+    dispatchRefreshAccessToken() {
+        return of();
+    }
+
+    get refreshComplete$() {
+        return of();
+    }
+
+    logOut() {
+        return of();
+    }
+}
+
+export class MockAlertService {
+    setMessage() {
+        return of();
+    }
+
+    getMessage() {
+        return of();
+    }
+}
+
+export class MockLanguageService {
+    setLanguage() {
         return of();
     }
 }
@@ -48,7 +100,17 @@ export class MockDataService {
     }
 }
 
-export class MocRouter {
+export class MockMessageService {
+    getMessages() {
+        return of();
+    }
+
+    updateMessage() {
+        return of();
+    }
+}
+
+export class MockRouter {
     event: Subject<Event> = new Subject();
 
     routerState = {

@@ -3,7 +3,7 @@ import { FormGroup, Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAc
          ValidationErrors, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { CVAUtils } from 'src/app/share/utils/cva.utils';
+import { CVAUtils } from 'src/app/shared/utils/cva.utils';
 
 @Component({
     selector: 'login-form',

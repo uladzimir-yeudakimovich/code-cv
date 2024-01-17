@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, timer } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -21,14 +21,10 @@ export class AlertService {
         });
     }
 
-    success(message: string, keepAfterNavigationChange = false) {
+    setMessage(type: string, message: string, keepAfterNavigationChange = false) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'success', text: message });
-    }
-
-    error(message: string, keepAfterNavigationChange = false) {
-        this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'error', text: message });
+        this.subject.next({ type, message });
+        timer(10000).subscribe(() => this.subject.next());
     }
 
     getMessage(): Observable<any> {

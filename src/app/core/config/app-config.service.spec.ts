@@ -7,9 +7,7 @@ import { MockLocalStorageService } from '@testing/mock-service.spec';
 import { mockAppConfig } from '@testing/mock-data.spec';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { AppConfigService } from './app-config.service';
-import { TypedJSON } from 'typedjson';
-import { AppConfig } from './app-config';
-import { AppActions } from '@core/store';
+import * as AppActions from '../store/app.action';
 
 describe('AppConfigService', () => {
     let service;
@@ -30,9 +28,7 @@ describe('AppConfigService', () => {
     }));
 
     describe('loadAppConfig()', () => {
-        let serializer;
         let appConfig;
-        let serializedAppConfig;
         const configsEqual = (config, compareToConfig) => Object.entries(config).every(([key, value]) => {
             if (isFunction(value)) {
                 return isFunction(compareToConfig[key]);
@@ -42,21 +38,21 @@ describe('AppConfigService', () => {
         });
 
         beforeEach(() => {
-            serializer = new TypedJSON(AppConfig);
             appConfig = cloneDeep(mockAppConfig);
-            serializedAppConfig = serializer.parse(appConfig);
             spyOn(service.http, 'get').and.returnValue(of(JSON.stringify(appConfig)));
         });
 
         it('should call to get the app config from the assets folder', () => {
             service.loadAppConfig();
 
-            expect(service.http.get).toHaveBeenCalledWith('/assets/config/app-config.json', {responseType: 'text'});
+            expect(service.http.get).toHaveBeenCalledWith('/assets/config/app-config-local.json', {responseType: 'text'});
         });
 
-        it('should populate the loaded app config', waitForAsync(() => {
+        it('should load app config and dispatch action', waitForAsync(() => {
+            spyOn(service.store, 'dispatch');
+
             service.loadAppConfig().then(() => {
-                expect(configsEqual(service.loadAppConfig, serializedAppConfig)).toEqual(true);
+                expect(service.store.dispatch).toHaveBeenCalledWith(new AppActions.LoadAppConfig(appConfig));
             });
         }));
     });

@@ -4,15 +4,12 @@
             "value": "local"
         },
         "authRedirectUri": {
-            "value": "http://localhost:3000/auth"
-        },
-        "authLogoutUri": {
-            "value": "http://localhost:3000/sign-out"
+            "value": "http://localhost:4000"
         }
     },
     "serviceConfig": {
-        "baseCVServiceUrl": {
-            "value": "http://uladzimir-yeudakimovich.herokuapp.com/",
+        "baseFirebaseUrl": {
+            "value": "http://localhost:4000/api/v1",
             "overrideAble": true
         }
     },

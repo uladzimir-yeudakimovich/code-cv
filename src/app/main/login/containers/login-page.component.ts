@@ -1,35 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../../services/auth.service';
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { JwtService } from '../../../core/services/jwt.service';
 import { AlertService } from '../../../services/alert.service';
 
 @Component({
     selector: 'login-page',
     templateUrl: './login-page.component.html',
+    styleUrls: ['../../../styles/styles.scss'],
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
+    isLoggedIn: boolean;
 
     constructor(
         private authService: AuthService,
-        private tokenStorage: TokenStorageService,
+        private jwtService: JwtService,
         private alertService: AlertService,
         private router: Router,
-    ) { }
+    ) {}
+
+    ngOnInit() {
+        this.jwtService.refreshComplete$.subscribe(isLogin => {
+            this.isLoggedIn = isLogin;
+        });
+    }
 
     onSubmit(credentials): void {
         const { username, password } = credentials;
 
         this.authService.login(username, password).subscribe(
             data => {
-                this.tokenStorage.saveUser(data);
-                this.tokenStorage.saveToken(data.accessToken);
-                this.alertService.success(`Logged in as ${data.username}`);
+                this.jwtService.saveUserData(data);
                 this.router.navigate(['/home']);
             },
             err => {
-                this.alertService.error(err.error.message || err.statusText);
+                this.alertService.setMessage('error', err.error.message || err.error.error);
             }
         );
     }
