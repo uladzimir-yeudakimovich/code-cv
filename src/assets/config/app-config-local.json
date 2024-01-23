@@ -8,7 +8,7 @@
         }
     },
     "serviceConfig": {
-        "baseFirebaseUrl": {
+        "baseUrl": {
             "value": "http://localhost:4000/api/v1",
             "overrideAble": true
         }

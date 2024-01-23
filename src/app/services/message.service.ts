@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { catchError, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 import { AppConfigService } from '../core/config/app-config.service';
 import { JwtService } from '../core/services/jwt.service';
 import { Feedback } from '../shared/models/models';
-import { Observable } from 'rxjs';
 
 const headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -14,24 +14,32 @@ const headers = new HttpHeaders({
     providedIn: 'root',
 })
 export class MessageService {
-    messages: Feedback[];
-    private baseFirebaseUrl: string;
+    private messages: Feedback[];
+    private baseUrl: string;
 
-    constructor(appConfigService: AppConfigService, private http: HttpClient, private jwtService: JwtService) {
+    constructor(
+        private appConfigService: AppConfigService,
+        private http: HttpClient,
+        private jwtService: JwtService
+    ) {
         appConfigService.getAppConfig().subscribe(appConfig => {
-            this.baseFirebaseUrl = appConfig.serviceConfig.baseFirebaseUrl.value;
+            this.baseUrl = appConfig.serviceConfig.baseUrl.value;
         });
     }
 
     getMessages(): Observable<Array<Feedback>> {
-        return this.http.get<Array<Feedback>>(`${this.baseFirebaseUrl}/feedbacks`, { headers });
+        return this.http.get<Array<Feedback>>(`${this.baseUrl}/feedbacks`, { headers })
+            .pipe(
+                tap(messages => this.messages = messages),
+                catchError(error => throwError('Error fetching messages:', error))
+            );
     }
 
     sendMessage(message: Feedback) {
         const { login } = this.jwtService.getUser();
 
         return this.http.post(
-            `${this.baseFirebaseUrl}/feedbacks`,
+            `${this.baseUrl}/feedbacks`,
             { ...message, name: login },
             { headers }
         ).subscribe(

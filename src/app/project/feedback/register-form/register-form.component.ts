@@ -11,7 +11,7 @@ import { MessageService } from '../../../services/message.service';
 export class RegisterFormComponent implements OnInit {
     createMessageForm: FormGroup;
 
-    constructor(public messageService: MessageService) { }
+    constructor(private messageService: MessageService) { }
 
     get isRequired() {
         return this.createMessageForm.controls;

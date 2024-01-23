@@ -19,7 +19,10 @@ export class ProjectsComponent implements OnInit {
         autoplayHoverPause: true,
     };
 
-    constructor(public dataService: DataService, public languageService: LanguageService) { }
+    constructor(
+        private dataService: DataService,
+        private languageService: LanguageService
+    ) { }
 
     ngOnInit() {
         this.dataService.getProjects().subscribe((response: Array<Project>) => {

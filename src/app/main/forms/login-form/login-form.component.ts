@@ -34,7 +34,7 @@ export class LoginFormComponent implements ControlValueAccessor, Validator, OnDe
         password: [null, [Validators.required, Validators.minLength(6)]],
     });
 
-    constructor(public formBuilder: FormBuilder) {}
+    constructor(private formBuilder: FormBuilder) {}
 
     ngOnDestroy(): void {
         if (this.form.untouched) {
