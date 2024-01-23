@@ -34,9 +34,9 @@ describe('LocalStorageService', () => {
         it('should set specified key in lsCache with default expiration', () => {
             spyOn(lsCache, 'set');
 
-            service.set('key', 'value');
+            service.set('key', 'value', 2);
 
-            expect(lsCache.set).toHaveBeenCalledWith('key', 'value', service.EXPIRE_TIME);
+            expect(lsCache.set).toHaveBeenCalledWith('key', 'value', 2);
         });
 
         it('should set specified key in lsCache with provided expiration', () => {

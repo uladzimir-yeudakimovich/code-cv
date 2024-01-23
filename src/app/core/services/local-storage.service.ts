@@ -5,7 +5,6 @@ import * as lsCache from 'lscache';
     providedIn: 'root',
 })
 export class LocalStorageService {
-    private EXPIRE_TIME: number = 60 * 24; // 1 day
 
     constructor() {
         this.flushExpired();
@@ -19,7 +18,7 @@ export class LocalStorageService {
         return value;
     }
 
-    set(key: string, value: any, expiresInMinutes: number = this.EXPIRE_TIME): void {
+    set(key: string, value: any, expiresInMinutes: number): void {
         lsCache.set(key, value, expiresInMinutes);
     }
 

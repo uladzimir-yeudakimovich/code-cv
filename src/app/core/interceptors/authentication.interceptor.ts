@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { EMPTY, Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import { JwtService } from '../services/jwt.service';
 
 @Injectable()
@@ -13,33 +13,33 @@ export class AuthenticationInterceptor implements HttpInterceptor {
             return next.handle(req);
         }
 
-        return next.handle(this.addAuthenticationToken(req)).pipe(
+        return next.handle(this.addAuthenticationToken(req, null)).pipe(
             catchError((error: HttpErrorResponse) => {
                 if (error && error.status === 401) {
                     if (this.jwtService.isRefreshTokenExpired()) {
-                        this.jwtService.dispatchRefreshAccessToken();
-                        return EMPTY;
+                        this.jwtService.logOut();
+                        return throwError('Refresh token expired');
                     } else {
-                        this.jwtService.dispatchRefreshSession().subscribe(
-                            res => {
+                        return this.jwtService.refreshSession().pipe(
+                            switchMap((res) => {
                                 this.jwtService.updateAccessToken(res);
-                            },
-                            err => {
+                                const newRequest = this.addAuthenticationToken(req, res.accessToken);
+                                return next.handle(newRequest);
+                            }),
+                            catchError((err) => {
                                 this.jwtService.logOut();
                                 return throwError(err);
-                            }
+                            })
                         );
                     }
-                    return throwError(error);
                 } else {
-                    this.jwtService.logOut();
                     return throwError(error);
                 }
             })
         );
     }
 
-    private addAuthenticationToken(req: HttpRequest<any>): HttpRequest<any> {
+    private addAuthenticationToken(req: HttpRequest<any>, token: string | null): HttpRequest<any> {
         const jwtToken = this.jwtService.getToken();
         return jwtToken ? req.clone({
             setHeaders: {

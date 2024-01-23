@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { InformationResponse } from '../shared/models/models';
+import { InformationResponse, Project } from '../shared/models/models';
 import { AppConfigService } from '../core/config/app-config.service';
 
 const httpOptions = {
@@ -26,7 +26,7 @@ export class DataService {
         return this.http.get<InformationResponse>(`${this.baseFirebaseUrl}/information`, httpOptions);
     }
 
-    getProjects() {
-        return this.http.get(`${this.baseFirebaseUrl}/projects.json`, httpOptions);
+    getProjects(): Observable<Array<Project>> {
+        return this.http.get<Array<Project>>(`${this.baseFirebaseUrl}/projects`, httpOptions);
     }
 }

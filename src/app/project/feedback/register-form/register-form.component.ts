@@ -24,11 +24,7 @@ export class RegisterFormComponent implements OnInit {
     }
 
     onSubmit() {
-        this.messageService.updateMessage(this.createMessageForm.value).subscribe(
-            // TODO: Delete console
-            // (response) => console.log(response),
-            // (error) => console.log(error)
-        );
+        this.messageService.updateMessage(this.createMessageForm.value);
         this.createMessageForm.reset();
 
         (<any>window).dataLayer.push({
