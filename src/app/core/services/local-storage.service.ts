@@ -10,7 +10,7 @@ export class LocalStorageService {
         this.flushExpired();
     }
 
-    get(key: string, removeKey: boolean = false): string | null {
+    get(key: string, removeKey: boolean = false): any {
         const value = lsCache.get(key);
         if (removeKey) {
             this.remove(key);
