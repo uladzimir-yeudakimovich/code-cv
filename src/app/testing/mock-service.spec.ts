@@ -57,15 +57,11 @@ export class MockJwtService {
         return of();
     }
 
-    dispatchRefreshSession() {
+    refreshSession() {
         return of();
     }
 
-    dispatchRefreshAccessToken() {
-        return of();
-    }
-
-    get refreshComplete$() {
+    get isLoggedIn$() {
         return of();
     }
 

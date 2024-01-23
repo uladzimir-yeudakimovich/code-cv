@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { TokenResponse, LoginResponse } from '../models/responses';
+import { catchError } from 'rxjs/operators';
+import { TokenResponse, LoginResponse, UserInfo } from '../models/responses';
 import { AppConfigService } from '../config/app-config.service';
+import { LocalStorageService } from '@core/services/local-storage.service';
 
-const TOKEN_KEY = '_at';
-const USER_KEY = 'username';
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -14,68 +14,62 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class JwtService {
     baseUrl: string;
+    private TOKEN_KEY: string = '_at';
+    private USER_KEY: string = 'username';
+    private REFRESH_TOKEN_KEY: string = '_rt';
     private isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());
-    private refreshToken: string | null = null;
-    private expirationTimestamp: number | null = null;
 
-    constructor(private http: HttpClient, private router: Router, appConfigService: AppConfigService) {
-        appConfigService.getAppConfig().subscribe(appConfig => {
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        private appConfigService: AppConfigService,
+        private localStorageService: LocalStorageService
+    ) {
+        this.appConfigService.getAppConfig().subscribe(appConfig => {
             this.baseUrl = appConfig.globalConfig.authRedirectUri.value;
         });
     }
 
     saveUserData(res: LoginResponse): void {
-        window.sessionStorage.removeItem(TOKEN_KEY);
-        window.sessionStorage.setItem(TOKEN_KEY, res.accessToken);
-        window.sessionStorage.removeItem(USER_KEY);
-        window.sessionStorage.setItem(USER_KEY, JSON.stringify(res.user));
-        this.refreshToken = res.refreshToken;
-        this.expirationTimestamp = Date.now() / 1000 + res.refreshTokenExpiresIn;
+        this.localStorageService.set(this.TOKEN_KEY, res.accessToken, res.accessTokenExpiresIn);
+        this.localStorageService.set(this.USER_KEY, JSON.stringify(res.user), res.refreshTokenExpiresIn);
+        this.localStorageService.set(this.REFRESH_TOKEN_KEY, res.refreshToken, res.refreshTokenExpiresIn);
         this.isLoggedIn.next(true);
     }
 
     getToken(): string | null {
-        return window.sessionStorage.getItem(TOKEN_KEY);
+        return this.localStorageService.get(this.TOKEN_KEY);
     }
 
-    getUser(): any {
-        const user = window.sessionStorage.getItem(USER_KEY);
-        if (user) {
-            return JSON.parse(user);
-        }
-
-        return {};
+    getUser(): UserInfo {
+        const user = this.localStorageService.get(this.USER_KEY);
+        return user ? JSON.parse(user) : {} as UserInfo;
     }
 
     isRefreshTokenExpired(): boolean {
-        return this.expirationTimestamp < Date.now() / 1000;
+        return !this.localStorageService.get(this.REFRESH_TOKEN_KEY);
     }
 
     updateAccessToken(res: TokenResponse): void {
-        window.sessionStorage.removeItem(TOKEN_KEY);
-        window.sessionStorage.setItem(TOKEN_KEY, res.accessToken);
+        this.localStorageService.set(this.TOKEN_KEY, res.accessToken, res.accessTokenExpiresIn);
     }
 
-    dispatchRefreshSession(): Observable<any> {
-        return this.http.post(`${this.baseUrl}/refresh-token`, {
-            refreshToken: this.refreshToken,
-        }, httpOptions);
-    }
-
-    dispatchRefreshAccessToken(): Observable<boolean | void> {
-        if (this.isRefreshTokenExpired()) {
-            this.logOut();
-            return throwError('Refresh token expired');
-        }
-    }
-
-    get refreshComplete$(): Observable<boolean> {
-        return this.isLoggedIn.asObservable();
+    refreshSession(): Observable<LoginResponse> {
+        return this.http.post<LoginResponse>(
+            `${this.baseUrl}/refresh-token`,
+            {refreshToken: this.localStorageService.get(this.REFRESH_TOKEN_KEY)},
+            httpOptions
+        ).pipe(
+            catchError(err => throwError('Failed to refresh token'))
+        );
     }
 
     logOut(): void {
-        window.sessionStorage.clear();
         this.isLoggedIn.next(false);
         this.router.navigate(['/']);
+    }
+
+    get isLoggedIn$(): Observable<boolean> {
+        return this.isLoggedIn.asObservable();
     }
 }

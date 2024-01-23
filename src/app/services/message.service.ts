@@ -4,10 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppConfigService } from '../core/config/app-config.service';
 import { JwtService } from '../core/services/jwt.service';
 import { Feedback } from '../shared/models/models';
+import { Observable } from 'rxjs';
 
 const headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'SkipAuthorization': 'true',
 });
 
 @Injectable({
@@ -23,20 +23,19 @@ export class MessageService {
         });
     }
 
-    getMessages() {
-        return this.http.get(`${this.baseFirebaseUrl}/messages.json`, { headers });
+    getMessages(): Observable<Array<Feedback>> {
+        return this.http.get<Array<Feedback>>(`${this.baseFirebaseUrl}/feedbacks`, { headers });
     }
 
     updateMessage(message: Feedback) {
-        const { username } = this.jwtService.getUser();
-        message.time = new Date();
-        message.name = username;
-        this.messages.push(message);
+        const { login } = this.jwtService.getUser();
 
-        return this.http.put(
-            `${this.baseFirebaseUrl}/messages.json`,
-            this.messages,
+        return this.http.post(
+            `${this.baseFirebaseUrl}/feedbacks`,
+            { ...message, name: login },
             { headers }
+        ).subscribe(
+            (res: Feedback) => this.messages.push(res)
         );
     }
 }

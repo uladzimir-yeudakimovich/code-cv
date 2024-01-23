@@ -5,7 +5,7 @@ import { cloneDeep, isEqual, isFunction } from 'lodash';
 import { of } from 'rxjs';
 import { MockLocalStorageService } from '@testing/mock-service.spec';
 import { mockAppConfig } from '@testing/mock-data.spec';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { LocalStorageService } from '@core/services/local-storage.service';
 import { AppConfigService } from './app-config.service';
 import * as AppActions from '../store/app.action';
 

@@ -1,6 +1,7 @@
 export interface TokenResponse {
     message: string;
     accessToken: string;
+    accessTokenExpiresIn: number;
 }
 
 export interface LoginResponse extends TokenResponse {
@@ -10,7 +11,7 @@ export interface LoginResponse extends TokenResponse {
     refreshTokenExpiresIn: number;
 }
 
-interface UserInfo {
+export interface UserInfo {
     id: string;
     login: string;
 }

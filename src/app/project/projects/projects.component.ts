@@ -22,7 +22,7 @@ export class ProjectsComponent implements OnInit {
     constructor(public dataService: DataService, public languageService: LanguageService) { }
 
     ngOnInit() {
-        this.dataService.getProjects().subscribe((response: Project[]) => {
+        this.dataService.getProjects().subscribe((response: Array<Project>) => {
             this.languageService.currentLang.subscribe((lang: string) => {
                 this.data = response.map(el => {
                     el.description = el[lang];

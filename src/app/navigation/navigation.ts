@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit, Inject } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
+import { throwError } from 'rxjs';
 import { JwtService } from '../core/services/jwt.service';
 
 @Component({
@@ -28,10 +29,15 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.jwtService.refreshComplete$.subscribe(isLogin => {
-            this.isLoggedIn = isLogin;
-            this.username = this.jwtService.getUser().login;
-        });
+        this.jwtService.isLoggedIn$.subscribe(
+            isLogin => {
+                this.isLoggedIn = isLogin;
+                this.username = this.jwtService.getUser().login;
+            },
+            error => {
+                throwError('Error in Navigation:', error);
+            }
+        );
 
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
