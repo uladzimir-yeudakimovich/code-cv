@@ -6,7 +6,8 @@ import { of, ReplaySubject } from 'rxjs';
 import { AppEffects } from './app.effects';
 import * as actions from './app.action';
 import { DataService } from '../../services/data.service';
-import { MockDataService } from '../../testing/mock-service.spec';
+import { JwtService } from '../services/jwt.service';
+import { MockDataService, MockJwtService } from '../../testing/mock-service.spec';
 import { mockInformation } from '../../testing/mock-data.spec';
 
 describe('AppEffects', () => {
@@ -22,6 +23,7 @@ describe('AppEffects', () => {
                 }),
                 provideMockActions(() => new Actions()),
                 {provide: DataService, useClass: MockDataService},
+                {provide: JwtService, useClass: MockJwtService},
             ],
         });
 
