@@ -14,8 +14,8 @@ const headers = new HttpHeaders({
     providedIn: 'root',
 })
 export class MessageService {
-    baseFirebaseUrl: string;
     messages: Feedback[];
+    private baseFirebaseUrl: string;
 
     constructor(appConfigService: AppConfigService, private http: HttpClient, private jwtService: JwtService) {
         appConfigService.getAppConfig().subscribe(appConfig => {
@@ -27,7 +27,7 @@ export class MessageService {
         return this.http.get<Array<Feedback>>(`${this.baseFirebaseUrl}/feedbacks`, { headers });
     }
 
-    updateMessage(message: Feedback) {
+    sendMessage(message: Feedback) {
         const { login } = this.jwtService.getUser();
 
         return this.http.post(

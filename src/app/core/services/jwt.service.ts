@@ -13,7 +13,7 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class JwtService {
-    baseUrl: string;
+    private baseUrl: string;
     private TOKEN_KEY: string = '_at';
     private USER_KEY: string = 'username';
     private REFRESH_TOKEN_KEY: string = '_rt';
@@ -65,6 +65,7 @@ export class JwtService {
     }
 
     logOut(): void {
+        this.localStorageService.removeAll();
         this.isLoggedIn.next(false);
         this.router.navigate(['/']);
     }

@@ -101,6 +101,10 @@ export class MockMessageService {
         return of();
     }
 
+    sendMessage() {
+        return of();
+    }
+
     updateMessage() {
         return of();
     }
@@ -139,10 +143,18 @@ export class MockLocalStorageService {
     }
 
     set(key: string, value: any, expiresInMinutes?: number) {
-        //
+        return of();
     }
 
     remove(key: string) {
-        //
+        return of();
+    }
+
+    removeExpired() {
+        return of();
+    }
+
+    removeAll() {
+        return of();
     }
 }

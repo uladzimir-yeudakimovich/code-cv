@@ -24,7 +24,7 @@ export class RegisterFormComponent implements OnInit {
     }
 
     onSubmit() {
-        this.messageService.updateMessage(this.createMessageForm.value);
+        this.messageService.sendMessage(this.createMessageForm.value);
         this.createMessageForm.reset();
 
         (<any>window).dataLayer.push({

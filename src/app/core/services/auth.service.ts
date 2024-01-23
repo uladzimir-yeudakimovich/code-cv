@@ -12,7 +12,7 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    baseUrl: string;
+    private baseUrl: string;
 
     constructor(appConfigService: AppConfigService, private http: HttpClient) {
         appConfigService.getAppConfig().subscribe(appConfig => {

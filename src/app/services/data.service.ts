@@ -14,7 +14,7 @@ const httpOptions = {
     providedIn: 'root',
 })
 export class DataService {
-    baseFirebaseUrl: string;
+    private baseFirebaseUrl: string;
 
     constructor(private http: HttpClient, appConfigService: AppConfigService) {
         appConfigService.getAppConfig().subscribe(appConfig => {

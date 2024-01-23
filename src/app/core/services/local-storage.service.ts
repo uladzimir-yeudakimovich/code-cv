@@ -7,7 +7,7 @@ import * as lsCache from 'lscache';
 export class LocalStorageService {
 
     constructor() {
-        this.flushExpired();
+        this.removeExpired();
     }
 
     get(key: string, removeKey: boolean = false): any {
@@ -26,7 +26,11 @@ export class LocalStorageService {
         lsCache.remove(key);
     }
 
-    flushExpired(): void {
+    removeExpired(): void {
         lsCache.flushExpired();
+    }
+
+    removeAll(): void {
+        lsCache.flush();
     }
 }
