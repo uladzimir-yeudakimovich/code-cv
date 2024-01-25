@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, timer } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AppConfigService } from '../config/app-config.service';
 
 const httpOptions = {

@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../../core/services/auth.service';
 import { JwtService } from '../../../core/services/jwt.service';
 import { AlertService } from '../../../services/alert.service';
+import { UserCredentials } from '@shared/models/models';
 
 @Component({
     selector: 'register-page',
@@ -34,7 +35,7 @@ export class RegisterPageComponent implements OnInit {
         );
     }
 
-    onSubmit(credentials): void {
+    onSubmit(credentials: UserCredentials): void {
         const { username, email, password } = credentials;
 
         this.authService.register(username, email, password).subscribe(

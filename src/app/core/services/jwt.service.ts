@@ -14,10 +14,10 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class JwtService {
     private baseUrl: string;
-    private TOKEN_KEY: string = '_at';
-    private USER_KEY: string = 'username';
-    private REFRESH_TOKEN_KEY: string = '_rt';
     private isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());
+    private readonly TOKEN_KEY: string = '_at';
+    private readonly USER_KEY: string = 'username';
+    private readonly REFRESH_TOKEN_KEY: string = '_rt';
 
     constructor(
         private http: HttpClient,

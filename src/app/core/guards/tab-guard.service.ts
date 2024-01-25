@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@a
 import { AppSelectors } from '@core/store';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { filter, map, take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { GetUrlItemsFromRoute } from '../../shared/utils/routing.utils';
 
 @Injectable({ providedIn: 'root' })

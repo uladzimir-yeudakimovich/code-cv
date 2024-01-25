@@ -32,3 +32,9 @@ export interface Feedback {
     name: string;
     date: Date;
 }
+
+export interface UserCredentials {
+    email?: string;
+    password: string;
+    username: string;
+}
