@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class JwtService {
     private baseUrl: string;
-    private isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());
+    private isLoggedIn = new BehaviorSubject<boolean>(false);
     private readonly TOKEN_KEY: string = '_at';
     private readonly USER_KEY: string = 'username';
     private readonly REFRESH_TOKEN_KEY: string = '_rt';
@@ -27,6 +27,7 @@ export class JwtService {
     ) {
         this.appConfigService.getAppConfig().subscribe(appConfig => {
             this.baseUrl = appConfig.globalConfig.authRedirectUri.value;
+            this.isLoggedIn.next(!!this.getToken());
         });
     }
 

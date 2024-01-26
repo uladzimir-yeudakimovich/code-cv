@@ -1,7 +1,9 @@
-<app-alert></app-alert>
+<ng-container>
+    <app-alert></app-alert>
 
-<register *ngIf="!isLoggedIn" (save)="onSubmit($event)"></register>
+    <register *ngIf="!(jwtService.isLoggedIn$ | async)" (save)="onSubmit($event)"></register>
 
-<mat-card *ngIf="isLoggedIn">
-    <mat-card-content>You are already registered.</mat-card-content>
-</mat-card>
+    <mat-card *ngIf="jwtService.isLoggedIn$ | async">
+        <mat-card-content>You are already registered.</mat-card-content>
+    </mat-card>
+</ng-container>

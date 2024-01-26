@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
-import { throwError } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 import { JwtService } from '../core/services/jwt.service';
 
 @Component({
@@ -10,18 +10,16 @@ import { JwtService } from '../core/services/jwt.service';
     styleUrls: ['./navigation.scss'],
 })
 export class NavigationComponent implements OnInit, OnDestroy {
-    mobileQuery: MediaQueryList;
-    title: string;
-    isLoggedIn: boolean;
     username: string;
-
-    private _mobileQueryListener: () => void;
+    private mobileQuery: MediaQueryList;
+    private readonly _mobileQueryListener: () => void;
 
     constructor(
-        changeDetectorRef: ChangeDetectorRef,
-        media: MediaMatcher,
+        public jwtService: JwtService,
+        private changeDetectorRef: ChangeDetectorRef,
+        private media: MediaMatcher,
         private router: Router,
-        private jwtService: JwtService,
+        private titleService: Title,
     ) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -29,25 +27,21 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.jwtService.isLoggedIn$.subscribe(
-            isLogin => {
-                this.isLoggedIn = isLogin;
-                this.username = this.jwtService.getUser().login;
-            },
-            error => {
-                throwError('Error in Navigation:', error);
-            }
-        );
-
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
-                const name = event.url.replace('/', '');
-                this.title = name.charAt(0).toUpperCase() + name.slice(1);
-                if (!this.title) {
-                    this.title = 'Login';
-                };
+                const urlParts = event.url.split('/').filter(Boolean);
+                const newTitle = urlParts.length > 0 ? urlParts[0].charAt(0).toUpperCase() + urlParts[0].slice(1) : 'Login';
+                this.titleService.setTitle(newTitle);
             }
         });
+    }
+
+    getTitle(): string {
+        return this.titleService.getTitle();
+    }
+
+    isMobile(): boolean {
+        return this.mobileQuery.matches;
     }
 
     logout(): void {
