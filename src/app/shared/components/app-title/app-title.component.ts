@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'app-title',
     template: `
-        <mat-card>
+        <mat-card appearance="outlined">
           <mat-card-content>{{ title }}</mat-card-content>
         </mat-card>
     `,
