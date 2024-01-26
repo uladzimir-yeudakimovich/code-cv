@@ -5,10 +5,13 @@ import { InformationResponse } from '../../shared/models/models';
 
 
 export enum ActionTypes {
-    LoadApplicationConfig = 'Load application config',
-    LoadGeneralInformation = 'Load General Information',
-    LoadGeneralInformationSuccess = 'Load General Information Success',
-    LoadGeneralInformationFailure = 'Load General Information Failure',
+    LoadApplicationConfig = '[App Config] Load application config',
+    LoadGeneralInformation = '[General info] Load General Information',
+    LoadGeneralInformationSuccess = '[General info] Load General Information Success',
+    LoadGeneralInformationFailure = '[General info] Load General Information Failure',
+    LoadRefreshSession = '[Auth] Load Refresh Session',
+    LoadRefreshSessionSuccess = '[Auth] Load Refresh Session Success',
+    LoadRefreshSessionFailure = '[Auth] Load Refresh Session Failure',
 }
 
 export class LoadAppConfig implements Action {
@@ -33,8 +36,27 @@ export class LoadInformationFailure implements Action {
     constructor(public error: HttpErrorResponse) {}
 }
 
+export class LoadRefreshSession implements Action {
+    readonly type = ActionTypes.LoadRefreshSession;
+}
+
+export class LoadRefreshSessionSuccess implements Action {
+    readonly type = ActionTypes.LoadRefreshSessionSuccess;
+
+    constructor(public accessToken: string) {}
+}
+
+export class LoadRefreshSessionFailure implements Action {
+    readonly type = ActionTypes.LoadRefreshSessionFailure;
+
+    constructor(public error: HttpErrorResponse) {}
+}
+
 export type Actions =
     | LoadAppConfig
     | LoadInformation
     | LoadInformationSuccess
-    | LoadInformationFailure;
+    | LoadInformationFailure
+    | LoadRefreshSession
+    | LoadRefreshSessionSuccess
+    | LoadRefreshSessionFailure;

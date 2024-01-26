@@ -1,7 +1,9 @@
 <app-alert></app-alert>
 
-<register *ngIf="!isLoggedIn" (save)="onSubmit($event)"></register>
+<ng-container>
+    <register *ngIf="!(jwtService.isLoggedIn$ | async); else loggedInTemplate" (save)="onSubmit($event)"></register>
+</ng-container>
 
-<mat-card *ngIf="isLoggedIn">
-    <mat-card-content>You are already registered.</mat-card-content>
-</mat-card>
+<ng-template #loggedInTemplate>
+    <app-title [title]="'You are already registered.'"></app-title>
+</ng-template>

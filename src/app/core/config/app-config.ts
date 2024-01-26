@@ -22,7 +22,7 @@ export class GlobalConfig {
 @jsonObject
 export class ServiceConfig {
     @jsonMember
-        baseFirebaseUrl: StringConfigProperty;
+        baseUrl: StringConfigProperty;
 }
 
 @jsonObject

@@ -11,7 +11,7 @@ import { MessageService } from '../../../services/message.service';
 export class RegisterFormComponent implements OnInit {
     createMessageForm: FormGroup;
 
-    constructor(public messageService: MessageService) { }
+    constructor(private messageService: MessageService) { }
 
     get isRequired() {
         return this.createMessageForm.controls;
@@ -24,7 +24,7 @@ export class RegisterFormComponent implements OnInit {
     }
 
     onSubmit() {
-        this.messageService.updateMessage(this.createMessageForm.value);
+        this.messageService.sendMessage(this.createMessageForm.value);
         this.createMessageForm.reset();
 
         (<any>window).dataLayer.push({

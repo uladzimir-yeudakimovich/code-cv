@@ -62,7 +62,7 @@ describe('LocalStorageService', () => {
         it('should flush expired keys from lsCache', () => {
             spyOn(lsCache, 'flushExpired');
 
-            service.flushExpired();
+            service.removeExpired();
 
             expect(lsCache.flushExpired).toHaveBeenCalled();
         });

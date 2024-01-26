@@ -8,8 +8,8 @@
         }
     },
     "serviceConfig": {
-        "baseFirebaseUrl": {
-            "value": "https://portfolio-57f5d.firebaseio.com",
+        "baseUrl": {
+            "value": "https://uladzimir-yeudakimovich.herokuapp.com/api/v1",
             "overrideAble": true
         }
     },

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, timer } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AppConfigService } from '../config/app-config.service';
 
 const httpOptions = {
@@ -12,7 +12,7 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    baseUrl: string;
+    private baseUrl: string;
 
     constructor(appConfigService: AppConfigService, private http: HttpClient) {
         appConfigService.getAppConfig().subscribe(appConfig => {

@@ -7,6 +7,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import * as actions from './app.action';
 import { DataService } from '../../services/data.service';
 import { InformationResponse } from '../../shared/models/models';
+import { JwtService } from '@core/services/jwt.service';
 
 @Injectable()
 export class AppEffects {
@@ -18,8 +19,19 @@ export class AppEffects {
         )),
     ));
 
+    loadRefreshSession$: Observable<Action> = createEffect(() => this.actions$.pipe(
+        ofType(actions.ActionTypes.LoadRefreshSession),
+        switchMap(() =>
+            this.jwtService.refreshSession().pipe(
+                map((response) => new actions.LoadRefreshSessionSuccess(response.accessToken)),
+                catchError((error: HttpErrorResponse) => of(new actions.LoadRefreshSessionFailure(error)))
+            )
+        )),
+    );
+
     constructor(
         private actions$: Actions,
         private dataService: DataService,
+        private jwtService: JwtService,
     ) {}
 }

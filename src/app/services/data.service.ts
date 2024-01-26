@@ -14,19 +14,19 @@ const httpOptions = {
     providedIn: 'root',
 })
 export class DataService {
-    baseFirebaseUrl: string;
+    private baseUrl: string;
 
     constructor(private http: HttpClient, appConfigService: AppConfigService) {
         appConfigService.getAppConfig().subscribe(appConfig => {
-            this.baseFirebaseUrl = appConfig.serviceConfig.baseFirebaseUrl.value;
+            this.baseUrl = appConfig.serviceConfig.baseUrl.value;
         });
     }
 
     getInformation(): Observable<InformationResponse> {
-        return this.http.get<InformationResponse>(`${this.baseFirebaseUrl}/information`, httpOptions);
+        return this.http.get<InformationResponse>(`${this.baseUrl}/information`, httpOptions);
     }
 
     getProjects(): Observable<Array<Project>> {
-        return this.http.get<Array<Project>>(`${this.baseFirebaseUrl}/projects`, httpOptions);
+        return this.http.get<Array<Project>>(`${this.baseUrl}/projects`, httpOptions);
     }
 }

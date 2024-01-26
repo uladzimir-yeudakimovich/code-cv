@@ -16,7 +16,7 @@ export class RegisterComponent {
         credentials: [null, [Validators.required]],
     });
 
-    constructor(public formBuilder: FormBuilder) {}
+    constructor(private formBuilder: FormBuilder) {}
 
     onSubmit(): void {
         if (this.form.invalid) {

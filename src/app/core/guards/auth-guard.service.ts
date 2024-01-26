@@ -1,28 +1,24 @@
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { JwtService } from '../services/jwt.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard {
-    isLoggedIn: boolean;
+    constructor(private jwtService: JwtService, private router: Router) {}
 
-    constructor(private jwtService: JwtService) {
-        this.jwtService.isLoggedIn$.subscribe(
-            isLogin => {
-                this.isLoggedIn = isLogin;
-            },
-            error => {
-                throwError('Error in AuthGuard:', error);
-            }
+    canActivate(): Observable<boolean> {
+        return this.jwtService.isLoggedIn$.pipe(
+            take(1),
+            map(isLoggedIn => {
+                if (isLoggedIn) {
+                    return true;
+                } else {
+                    this.router.navigate(['/login']);
+                    return false;
+                }
+            })
         );
-    }
-
-    canActivate(): boolean {
-        if (this.isLoggedIn) {
-            return true;
-        } else {
-            this.jwtService.logOut();
-            return false;
-        }
     }
 }

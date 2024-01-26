@@ -9,14 +9,14 @@ import { InformationResponse, Info, Competence } from '../../shared/models/model
     styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-    // public education: Info[];
-    // public experience: Info[];
-    // public technology: Competence[];
-    public general: Info;
+    // education: Info[];
+    // experience: Info[];
+    // technology: Competence[];
+    general: Info;
 
     constructor(
-        public dataService: DataService,
-        public languageService: LanguageService,
+        private dataService: DataService,
+        private languageService: LanguageService,
     ) {}
 
     ngOnInit() {
