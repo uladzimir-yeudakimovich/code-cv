@@ -5,13 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
 import { ChangeLanguageComponent } from './components/change-language/change-language';
 import { MaterialModule } from '../material.module';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { TitleComponent } from './components/app-title/app-title.component';
 
 @NgModule({
     declarations: [
         AlertComponent,
         ChangeLanguageComponent,
-        NotFoundComponent,
+        TitleComponent,
     ],
     imports: [
         CommonModule,
@@ -26,6 +26,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         MaterialModule,
         ChangeLanguageComponent,
         MatMenuModule,
+        TitleComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [],
