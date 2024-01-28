@@ -11,7 +11,7 @@
     flex-direction: column;
 }
 
-mat-card {
+.mat-mdc-card {
     height: 40%;
     margin: 10%;
     display: flex;
@@ -20,6 +20,6 @@ mat-card {
     box-shadow: none !important;
 }
 
-mat-card-content {
+.mat-mdc-card-content {
     font-size: 24px;
 }
