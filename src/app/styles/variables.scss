@@ -10,3 +10,9 @@ $modal-background: linear-gradient(-180deg, #E6F0F0 0%, #E9F0E6 100%);
 $input-border-color: gray;
 $hover-input-color: #2f3034;
 $alert-success-color: #36f456;
+$primary-gray: #bebebe;
+$primary-blue: #5171f3;
+
+@mixin bordered($color, $width) {
+    border: $width solid $color;
+}

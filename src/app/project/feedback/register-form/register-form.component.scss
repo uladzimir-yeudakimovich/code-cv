@@ -1,4 +1,4 @@
-@import "../../../styles/variables.scss";
+@import "../../../styles/variables";
 
 .feedback__register-form {
   margin: 0;
@@ -10,7 +10,7 @@
   height: 48px;
   padding: 0 5%;
   margin-bottom: 15px;
-  border: 2px solid $input-border-color;
+  @include bordered($input-border-color, 2px);
 }
 
 .form-control_message {
@@ -19,11 +19,11 @@
 }
 
 .form-control:hover {
-  border: 2px solid $hover-input-color;
+  @include bordered($hover-input-color, 2px);
 }
 
 .is-invalid {
-  border: 2px solid $alert-error-color;
+  @include bordered($alert-error-color, 2px);
 }
 
 .invalid-feedback {

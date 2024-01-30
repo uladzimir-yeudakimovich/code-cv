@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "src/app/styles/variables";
 
 .projects {
   padding: 0 15px;
@@ -12,22 +12,24 @@
   justify-content: center;
 }
 
-.projects__my-works-right {
+.projects__my-works {
   display: flex;
-  margin-top: 20px;
+  padding-bottom: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  @include bordered($primary-gray, 2px);
 }
 
-.projects__my-works-left {
-  display: flex;
-  margin-top: 20px;
+.projects__my-works-reverse {
+  @extend .projects__my-works;
   flex-direction: row-reverse;
   justify-content: center;
 }
 
 .projects__container {
-  width: 48% !important;
-  margin: 8px 1% !important;
-  display: inline-block !important;
+  width: 48%;
+  margin: 8px 1%;
+  display: inline-block;
 }
 
 .projects__my-work_slide-name {
@@ -51,10 +53,6 @@
   text-align: justify;
 }
 
-.projects__my-work_img {
-  width: 100% !important;
-}
-
 @media (max-width: 768px) {
   .projects__my-works-left,
   .projects__my-works-right {
@@ -63,8 +61,8 @@
   }
 
   .projects__container {
-    width: 100% !important;
-    margin: 0 !important;
-    display: block !important;
+    width: 100%;
+    margin: 0;
+    display: block;
   }
 }

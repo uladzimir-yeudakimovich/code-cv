@@ -20,7 +20,7 @@ export interface Project {
     click: string;
     description?: string;
     en: string;
-    images: string;
+    images: Array<string>;
     link: string;
     name: string;
     ru: string;
