@@ -27,7 +27,7 @@ export class JwtService {
     ) {
         this.appConfigService.getAppConfig().subscribe(appConfig => {
             this.baseUrl = appConfig.globalConfig.authRedirectUri.value;
-            this.isLoggedIn.next(!!this.getToken());
+            this.isLoggedIn.next(!!this.getToken() || !this.isRefreshTokenExpired());
         });
     }
 

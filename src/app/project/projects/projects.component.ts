@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { DataService } from '../../services/data.service';
 import { LanguageService } from '../../services/language.service';
 import { Project } from '../../shared/models/models';
@@ -11,13 +10,6 @@ import { Project } from '../../shared/models/models';
 })
 export class ProjectsComponent implements OnInit {
     data: Project[];
-    customOptions: OwlOptions = {
-        items: 1,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-    };
 
     constructor(
         private dataService: DataService,

@@ -1,0 +1,53 @@
+@import "src/app/styles/variables";
+
+.slide {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 32px;
+    font-size: 45px;
+    color: $primary-blue;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.rightArrow {
+    @extend .arrow;
+    right: 32px;
+}
+
+.leftArrow {
+    @extend .arrow;
+    left: 32px;
+}
+
+.slider {
+    position: relative;
+    height: 100%;
+}
+
+.dotsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.dot {
+    margin: 0 3px;
+    cursor: pointer;
+    font-size: 20px;
+    color: $primary-gray;
+}
+
+.dot-active {
+    @extend .dot;
+    color: $primary-blue;
+}

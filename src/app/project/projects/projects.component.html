@@ -1,6 +1,6 @@
 <div class="projects">
-	<div *ngFor="let slide of this.data, let e=even;">
-		<div class="{{ e ? 'projects__my-works-left' : 'projects__my-works-right' }}">
+	<div *ngFor="let slide of data, let e=even;">
+		<div class="{{ e ? 'projects__my-works' : 'projects__my-works-reverse' }}">
 			<article class="projects__container">
 				<div>
 					<h3 class="projects__my-work_slide-name">{{ slide.name | translate }}</h3>
@@ -8,13 +8,7 @@
 				</div>
 				<p class="projects__my-work_description">&nbsp;{{ slide.description }}</p>
 			</article>
-			<owl-carousel-o [options]="customOptions" class="projects__container" *ngIf="data">
-				<ng-container *ngFor="let img of slide.images; let i=index">
-					<ng-template carouselSlide>
-						<img class="projects__my-work_img" src="{{ img }}" alt="Random {{ i + 1 }} slide">
-					</ng-template>
-				</ng-container>
-			</owl-carousel-o>
+            <app-image-slider [slides]="slide.images" class="projects__container"></app-image-slider>
 		</div>
 	</div>
 </div>
