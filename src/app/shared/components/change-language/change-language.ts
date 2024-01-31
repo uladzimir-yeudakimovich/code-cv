@@ -21,7 +21,7 @@ export class ChangeLanguageComponent implements OnInit {
     }
 
     switchLanguage(event): void {
-        this.language = event.target.value;
+        this.language = event.currentTarget.value;
         this.languageService.setLanguage(this.language);
 
         (<any>window).dataLayer.push({

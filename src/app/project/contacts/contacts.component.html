@@ -1,7 +1,7 @@
 <section class="contacts">
   <ul class="contacts_items" *ngFor="let contact of contacts">
     <li class="contact-item">
-      <i class="{{ contact.icon }}"></i>
+      <span class="lt-icon {{ contact.icon }}"></span>
       <a *ngIf="contact.isDownload; else simpleLink" class="contact-link" href="{{ contact.link }}" download>{{ contact.name | translate }}</a>
       <ng-template #simpleLink>
         <a class="contact-link" href="{{ contact.link }}">{{ contact.name | translate }}</a>
