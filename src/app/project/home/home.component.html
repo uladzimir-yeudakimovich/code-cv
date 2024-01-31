@@ -14,23 +14,23 @@
     <div class="home__description">
       <p>&nbsp;{{ general }}</p>
     </div>
-    <!-- <div class="home__description">
+    <div class="home__description">
       <h4 class="home__description-title">{{ 'home.education.title' | translate }}</h4>
       <ul *ngFor="let item of education">
-        <li>{{ item | translate }}</li>
+        <li>{{ item }}</li>
       </ul>
       <h4 class="home__description-title">{{ 'home.experience.title' | translate }}</h4>
       <ul *ngFor="let item of experience">
-        <li>{{ item | translate }}</li>
+        <li>{{ item }}</li>
       </ul>
       <h4 class="home__description-title">{{ 'home.technology.title' | translate }}</h4>
       <ul *ngFor="let item of technology">
         <li class="technology_level">{{ item.technology }}
           <div>
-            <i *ngFor="let star of item.level" class="lt-icon-star"></i>
+            <span *ngFor="let star of item.level" class="lt-icon lt-icon-star"></span>
           </div>
         </li>
       </ul>
-    </div> -->
+    </div>
   </article>
 </div>

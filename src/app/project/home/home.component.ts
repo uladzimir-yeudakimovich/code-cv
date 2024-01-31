@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { LanguageService } from '../../services/language.service';
-import { InformationResponse, Info, Competence } from '../../shared/models/models';
+import { InformationResponse, BasicInfo, GeneralInfo, Competence } from '../../shared/models/models';
 
 @Component({
     selector: 'app-home',
@@ -9,10 +9,10 @@ import { InformationResponse, Info, Competence } from '../../shared/models/model
     styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-    // education: Info[];
-    // experience: Info[];
-    // technology: Competence[];
-    general: Info;
+    education: BasicInfo[];
+    experience: BasicInfo[];
+    technology: Competence[];
+    general: GeneralInfo;
 
     constructor(
         private dataService: DataService,
@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.dataService.getInformation().subscribe((response: InformationResponse) => {
-            // this.technology = response.technology;
+            this.technology = response.technology;
             this.languageService.currentLang.subscribe((lang: string) => {
                 this.general = response.general[lang];
-                // this.education = response.education.map(el => el[lang]);
-                // this.experience = response.experience.map(el => el[lang]);
+                this.education = response.education.map(el => el[lang]);
+                this.experience = response.experience.map(el => el[lang]);
             });
         });
     }

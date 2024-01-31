@@ -1,18 +1,21 @@
 export interface InformationResponse {
-    education: Info[];
-    experience: Info[];
+    education: BasicInfo[];
+    experience: BasicInfo[];
     technology: Competence[];
-    general: Info;
+    general: GeneralInfo;
 }
 
-export interface Info {
+export interface BasicInfo {
     en: string;
     ru: string;
+}
+
+export interface GeneralInfo extends BasicInfo {
     name?: string;
 }
 
 export interface Competence {
-    level: number[];
+    level: Array<number>;
     technology: string;
 }
 
